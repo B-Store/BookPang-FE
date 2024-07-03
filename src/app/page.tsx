@@ -1,7 +1,7 @@
-import Image from 'next/image';
-import styles from './page.module.scss';
+import React from 'react';
 
-console.log('테스트코드');
-export default function Home() {
-  return;
-}
+const HomePage = () => {
+  return <p>HomePage</p>;
+};
+
+export default HomePage;
