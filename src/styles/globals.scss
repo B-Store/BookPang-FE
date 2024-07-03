@@ -1,3 +1,14 @@
+@font-face {
+  font-family: 'MinSans-Regular';
+  src: url('/fonts/MinSans-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 html,
 body,
 div,
@@ -84,6 +95,9 @@ video {
   border: 0;
   font-size: 100%;
   vertical-align: baseline;
+  font-family: 'MinSans-Regular';
+  font-weight: 400;
+  font-style: normal;
 }
 /* HTML5 display-role reset for older browsers */
 article,
