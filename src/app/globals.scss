@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'MinSans-Regular';
+  src: url('/fonts/MinSans-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: 'MinSans-Regular', sans-serif;
+}

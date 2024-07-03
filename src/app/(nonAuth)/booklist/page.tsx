@@ -1,7 +1,7 @@
 import React from 'react';
 
-const MyListPage = () => {
+const BookListPage = () => {
   return <div>page</div>;
 };
 
-export default MyListPage;
+export default BookListPage;
