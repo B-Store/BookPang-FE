@@ -1,8 +1,5 @@
 "use client";
 
-import logo from "@/../../public/assets/images/logo.svg";
-import Image from "next/image";
-
 import SignForm from "@/components/sign/SignForm";
 import React from "react";
 import { checkLoginId } from "@/api/sign";
@@ -11,8 +8,7 @@ const SignUpPage = () => {
   const signUpBtn = () => {};
 
   return (
-    <div>
-      <Image src={logo} alt="logo" />
+    <div className="pang">
       <SignForm
         signFn={signUpBtn}
         confirmPassword="confirmPassword"

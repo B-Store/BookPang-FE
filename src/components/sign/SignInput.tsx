@@ -20,13 +20,13 @@ const SignInput = ({ register, errors, ...props }: SignInputType) => {
     id || password || confirmPassword || nickName || phoneNumber;
 
   return (
-    <div>
-      <label htmlFor="user-input">
+    <div className="sign-content">
+      <label className="sign-content-title" htmlFor="user-input">
         <p>{registerContent}</p>
         <Image src={star} alt="blue star" />
       </label>
       <input
-        className="sign-input"
+        className="sign-content-input"
         {...register(`${registerContent as RegisterContentType}`, {
           required: true,
         })}

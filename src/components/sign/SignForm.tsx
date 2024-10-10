@@ -9,7 +9,7 @@ import ableEye from "@/../public/assets/images/sign/ableEye.svg";
 
 import disableEye from "@/../public/assets/images/sign/disableEye.svg";
 
-import type { InputType } from "@/types/commonType";
+import type { SignFormType, SignFormPropsType } from "@/types/commonType";
 import type { SignUser } from "@/types/signType";
 import Image from "next/image";
 
@@ -20,11 +20,7 @@ const SignForm = ({
   phoneNumberErrorMessage,
   selectLabel,
   ...props
-}: InputType) => {
-  // const [passwordTypeObj, setPasswordTypeObj] = useState({
-  //   passwordType: "password",
-  //   confirmPasswordType: "passowrd",
-  // });
+}: SignFormType) => {
   const [passwordType, setPasswordType] = useState("password");
   const [confirmPasswordType, setConfirmPasswordType] = useState("password");
 
@@ -48,16 +44,7 @@ const SignForm = ({
     phoneNumberType,
     phoneNumber,
     phoneNumberPlaceholder,
-  }: {
-    nickName?: string;
-    phoneNumber?: string;
-    confirmPassword?: string;
-    nickNameType?: string;
-    phoneNumberType?: string;
-    confirmPasswordPlaceholder?: string;
-    nickNamePlaceholder?: string;
-    phoneNumberPlaceholder?: string;
-  } = props;
+  }: SignFormPropsType = props;
 
   const duplicateCheck = () => {};
 
@@ -72,61 +59,64 @@ const SignForm = ({
       : setConfirmPasswordType("password");
 
   return (
-    <form onSubmit={handleSubmit(signFn)}>
-      <SignInput
-        register={register}
-        id="id"
-        type="text"
-        placeholder="아이디 입력"
-        errors={errors.id}
-      />
-      <Button duplicateFn={duplicateCheck} type="button" />
-      <SignInput
-        register={register}
-        type="password"
-        password="password"
-        placeholder="password"
-        errors={errors.password}
-      />
-      <Image alt="보이기" src={ableEye} onClick={changePasswordType} />
-      <Image alt="가리기" src={disableEye} onClick={changePasswordType} />
-      {confirmPassword && (
-        <>
-          <SignInput
-            register={register}
-            type={confirmPasswordType}
-            confirmPassword={confirmPassword}
-            placeholder={confirmPasswordPlaceholder}
-            errors={errors.confirmPassword}
-          />
-          <Image
-            alt="보이기"
-            src={ableEye}
-            onClick={changeConfirmPasswordType}
-          />
-          <Image
-            alt="가리기"
-            src={disableEye}
-            onClick={changeConfirmPasswordType}
-          />
-          <SignInput
-            register={register}
-            type={nickNameType}
-            nickName={nickName}
-            placeholder={nickNamePlaceholder}
-            errors={errors.nickName}
-          />
-          <SignInput
-            register={register}
-            type={phoneNumberType}
-            phoneNumber={phoneNumber}
-            placeholder={phoneNumberPlaceholder}
-            errors={errors.phoneNumber}
-          />
-        </>
-      )}
-      <Button type="submit" label={selectLabel} />
-    </form>
+    <>
+      <form className="pang-form" onSubmit={handleSubmit(signFn)}>
+        <h1 className="title">{selectLabel}</h1>
+        <SignInput
+          register={register}
+          id="id"
+          type="text"
+          placeholder="아이디 입력"
+          errors={errors.id}
+        />
+        <Button duplicateFn={duplicateCheck} type="button" />
+        <SignInput
+          register={register}
+          type="password"
+          password="password"
+          placeholder="password"
+          errors={errors.password}
+        />
+        <Image alt="보이기" src={ableEye} onClick={changePasswordType} />
+        <Image alt="가리기" src={disableEye} onClick={changePasswordType} />
+        {confirmPassword && (
+          <>
+            <SignInput
+              register={register}
+              type={confirmPasswordType}
+              confirmPassword={confirmPassword}
+              placeholder={confirmPasswordPlaceholder}
+              errors={errors.confirmPassword}
+            />
+            <Image
+              alt="보이기"
+              src={ableEye}
+              onClick={changeConfirmPasswordType}
+            />
+            <Image
+              alt="가리기"
+              src={disableEye}
+              onClick={changeConfirmPasswordType}
+            />
+            <SignInput
+              register={register}
+              type={nickNameType}
+              nickName={nickName}
+              placeholder={nickNamePlaceholder}
+              errors={errors.nickName}
+            />
+            <SignInput
+              register={register}
+              type={phoneNumberType}
+              phoneNumber={phoneNumber}
+              placeholder={phoneNumberPlaceholder}
+              errors={errors.phoneNumber}
+            />
+          </>
+        )}
+        <Button type="submit" label={selectLabel} />
+      </form>
+    </>
   );
 };
 
