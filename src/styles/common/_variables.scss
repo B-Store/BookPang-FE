@@ -1,0 +1,16 @@
+$colors: (
+  button-disabled: #eff2f6,
+  button-disabled-text: #b9b9b9,
+  input-title: #9c9c9c,
+  input-placeholder: #c3c3c3,
+  input-border-none: #9cb0c9,
+  input-border: #111111,
+  toggle-border-none: #d4d4d4,
+);
+
+$colors: map-merge(
+  $colors,
+  (
+    toggle-border: map-get($colors, input-border),
+  )
+);
