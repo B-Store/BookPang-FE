@@ -1,0 +1,7 @@
+@import "./variables";
+
+.sign-input {
+  border: 2px solid map-get($colors, input-border-none);
+  border-radius: 8px;
+  width: 100%;
+}
