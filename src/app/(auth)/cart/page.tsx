@@ -1,19 +1,9 @@
 "use client";
 
+import { BookList } from "@/types/bookType";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
-
-export interface bookList {
-  title: string;
-  link: string;
-  author: string;
-  itemId: number;
-  priceSales: number;
-  priceStandard: number;
-  cover: string;
-  categoryName: string;
-}
 
 const CartPage = () => {
   const books = [
@@ -90,7 +80,7 @@ const CartPage = () => {
     },
   ];
 
-  const [checkItems, setCheckItems] = useState<bookList[]>([]);
+  const [checkItems, setCheckItems] = useState<BookList[]>([]);
   const [productCounts, setProductCounts] = useState<{ [key: number]: number }>(
     {}
   );
@@ -115,7 +105,7 @@ const CartPage = () => {
   // 개별 선택
   const onCheckedHandler = (
     e: ChangeEvent<HTMLInputElement>,
-    item: bookList
+    item: BookList
   ) => {
     if (e.target.checked) {
       setCheckItems(prev => [...prev, item]);
@@ -307,7 +297,7 @@ const CartPage = () => {
           결제 상세내역 임시 버튼
         </div>
         {isDetailVisible && (
-          <div>
+          <div style={{ marginTop: "30px" }}>
             <div onClick={() => setIsDetailVisible(false)}>닫기</div>
             결제 상세내역
             <div>
@@ -341,6 +331,7 @@ const CartPage = () => {
             </div>
           </div>
         )}
+        {/* url로 객체 또는 배열을 보낼때 문자열로 변환되기때문에 제이슨형태로 인코딩해서 보내고 받을땐 다시 배열로 디코딩해서 사용한다 */}
         <button
           onClick={() =>
             router.push(
