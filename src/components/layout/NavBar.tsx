@@ -1,16 +1,28 @@
-import React from "react";
+"use client";
 import mainMenuButton from "@/../public/assets/icons/mainMenuButton.svg";
+import styles from "@/styles/components/layout/navBar.module.scss";
 import Image from "next/image";
-import "@/styles/main/navBar.scss";
+import { useState } from "react";
+import ToggleMenu from "../common/ToggleMenu";
 
 const NavBar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
-    <div className="nav-container">
-      <div className="menu-btn">
-        <Image src={mainMenuButton} alt="검색버튼" width={28} height={28} />
+    <div className={styles["nav-wrap"]}>
+      {isMenuOpen && <ToggleMenu />}
+      <div
+        onClick={() => setIsMenuOpen(prev => !prev)}
+        className={styles["nav-menu-btn"]}
+      >
+        <Image
+          src={mainMenuButton}
+          alt="햄버거 메뉴 이미지"
+          width={28}
+          height={28}
+        />
         <span>카테고리</span>
       </div>
-      <ul className="navButtons">
+      <ul className={styles["nav-buttons"]}>
         <li>메인</li>
         <li>베스트셀러</li>
         <li>새로나온 책</li>

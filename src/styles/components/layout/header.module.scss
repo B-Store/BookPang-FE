@@ -1,0 +1,22 @@
+.header-wrap {
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+
+  .header-top-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 335px;
+  }
+  .header-top-links {
+    font-size: 15px;
+    color: #8c9baf;
+    cursor: pointer;
+    display: flex;
+    gap: 16px;
+  }
+}
