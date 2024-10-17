@@ -88,7 +88,6 @@ const MainCarousel = () => {
           <button onClick={prevItemHandler} className={styles["carousel-btn"]}>
             이전
           </button>
-          {/* <div className={styles["main-carousel-container"]}> */}
           {mainItem
             .filter((_, index) => index !== currentIndex)
             .map((item: MainCarouselItem) => (
@@ -103,7 +102,6 @@ const MainCarousel = () => {
                 <div className={styles["main-carousel-info"]}>{item.title}</div>
               </div>
             ))}
-          {/* </div> */}
 
           <button onClick={nextItemHandler} className={styles["carousel-btn"]}>
             다음

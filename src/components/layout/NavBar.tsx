@@ -1,12 +1,19 @@
-import React from "react";
+"use client";
 import mainMenuButton from "@/../public/assets/icons/mainMenuButton.svg";
-import Image from "next/image";
 import styles from "@/styles/components/layout/navBar.module.scss";
+import Image from "next/image";
+import { useState } from "react";
+import ToggleMenu from "../common/ToggleMenu";
 
 const NavBar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <div className={styles["nav-wrap"]}>
-      <div className={styles["nav-menu-btn"]}>
+      {isMenuOpen && <ToggleMenu />}
+      <div
+        onClick={() => setIsMenuOpen(prev => !prev)}
+        className={styles["nav-menu-btn"]}
+      >
         <Image
           src={mainMenuButton}
           alt="햄버거 메뉴 이미지"
