@@ -1,0 +1,19 @@
+.nav-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 64px;
+
+  .nav-menu-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+  }
+
+  .nav-buttons {
+    display: flex;
+    gap: 24px;
+    cursor: pointer;
+  }
+}

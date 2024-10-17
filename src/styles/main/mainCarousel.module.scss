@@ -1,0 +1,108 @@
+.main-carousel-wrap {
+  width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+
+  .main-carousel-title-wrap {
+    margin: 32px 0 30px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .main-carousel-title {
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .main-carousel-menu-btn {
+      display: flex;
+      gap: 16px;
+
+      li {
+        border: 1px solid #d4d4d4;
+        border-radius: 16px;
+        padding: 8px;
+        cursor: pointer;
+        font-size: 15px;
+
+        &.active {
+          background-color: #9cb0c9;
+          color: #ffff;
+        }
+      }
+    }
+  }
+
+  .main-carousel-container {
+    display: flex;
+    align-items: center;
+
+    .main-carousel-first {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+
+      .main-carousel-first-info {
+        width: 505px;
+        height: 167px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .first-info-title,
+        .first-info-description {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .first-info-title {
+          font-size: 16px;
+          font-weight: bold;
+        }
+
+        .first-info-publisher {
+          font-size: 15px;
+          font-weight: bold;
+          color: #505050;
+        }
+
+        .discount-rate {
+          font-size: 15px;
+          color: #fce15c;
+        }
+
+        .first-info-price {
+          font-size: 17px;
+          font-weight: bold;
+        }
+
+        .first-info-description {
+          font-size: 16px;
+          color: #505050;
+        }
+      }
+    }
+
+    .main-carousel-list {
+      width: 704px;
+      height: 215px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 12px;
+
+      .main-carousel {
+        width: 145px;
+
+        .main-carousel-info {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+    .carousel-btn {
+    }
+  }
+}
