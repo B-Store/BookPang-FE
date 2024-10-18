@@ -6,3 +6,10 @@
   position: absolute;
   top: 6.2em;
 }
+
+.category-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  cursor: pointer;
+}

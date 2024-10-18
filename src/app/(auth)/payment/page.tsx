@@ -1,10 +1,6 @@
 "use client";
 
 import Modal from "@/components/common/Modal";
-import "@/styles/modal.scss";
-import { BookList } from "@/types/bookType";
-import Image from "next/image";
-import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 const PaymentPage = () => {

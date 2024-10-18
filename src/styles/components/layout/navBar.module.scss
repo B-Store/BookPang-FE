@@ -15,5 +15,10 @@
     display: flex;
     gap: 24px;
     cursor: pointer;
+
+    li.active {
+      font-size: 16px;
+      font-weight: 700;
+    }
   }
 }

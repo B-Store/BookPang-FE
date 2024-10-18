@@ -1,4 +1,3 @@
-"use client";
 import mainMenuButton from "@/../public/assets/icons/mainMenuButton.svg";
 import styles from "@/styles/components/layout/navBar.module.scss";
 import Image from "next/image";
@@ -7,6 +6,10 @@ import ToggleMenu from "../common/ToggleMenu";
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [selectedMenuIndex, setSelectedMenuIndex] = useState(0);
+
+  const navMenu = ["메인", "베스트셀러", "새로나온 책", "나의 서재", "북팡톡"];
+
   return (
     <div className={styles["nav-wrap"]}>
       {isMenuOpen && <ToggleMenu />}
@@ -23,11 +26,17 @@ const NavBar = () => {
         <span>카테고리</span>
       </div>
       <ul className={styles["nav-buttons"]}>
-        <li>메인</li>
-        <li>베스트셀러</li>
-        <li>새로나온 책</li>
-        <li>나의 서재</li>
-        <li>북팡톡</li>
+        {navMenu.map((item, idx) => {
+          return (
+            <li
+              key={idx}
+              onClick={() => setSelectedMenuIndex(idx)}
+              className={selectedMenuIndex === idx ? styles["active"] : ""}
+            >
+              {item}
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

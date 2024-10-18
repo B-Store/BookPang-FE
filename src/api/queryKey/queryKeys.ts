@@ -1,1 +1,3 @@
-export const QUERY_KEY = {};
+export const BOOKS_QUERY_KEY = {
+  headerCategories: "header/categories",
+};
