@@ -3,8 +3,8 @@ import React from "react";
 import Image from "next/image";
 import star from "../../../public/assets//images/sign/necessaryStar.svg";
 import warning from "../../../public/assets//images/sign/warning.svg";
-import type { SignInputType } from "@/types/commonType";
-import type { RegisterContentType } from "@/types/signType";
+import type { SignInputType } from "@/types/commonTypes";
+import type { RegisterContentType } from "@/types/signTypes";
 
 const SignInput = ({ register, errors, ...props }: SignInputType) => {
   const {

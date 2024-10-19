@@ -1,5 +1,5 @@
 import styles from "@/styles/main/mainCarousel.module.scss";
-import { MainCarouselItem } from "@/types/bookType";
+import { MainCarouselItem } from "@/types/bookTypes";
 import { categoryNameChangeHandler, discountRateHandler } from "@/utils/common";
 import { mainItem } from "@/utils/temp/mainCarousel";
 import Image from "next/image";

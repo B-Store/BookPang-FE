@@ -1,4 +1,4 @@
-export type BookList = {
+export type CartBookList = {
   title: string;
   link: string;
   author: string;
@@ -32,4 +32,12 @@ export type MainCarouselItem = {
   fixedPrice: boolean;
   customerReviewRank: number;
   subInfo: {};
+};
+
+export type BookList = {
+  id: number;
+  title: string;
+  author: string;
+  publisher: string;
+  cover: string;
 };

@@ -9,8 +9,8 @@ import ableEye from "@/../public/assets/images/sign/ableEye.svg";
 
 import disableEye from "@/../public/assets/images/sign/disableEye.svg";
 
-import type { SignFormType, SignFormPropsType } from "@/types/commonType";
-import type { SignUser } from "@/types/signType";
+import type { SignFormType, SignFormPropsType } from "@/types/commonTypes";
+import type { SignUser } from "@/types/signTypes";
 import Image from "next/image";
 
 const SignForm = ({
