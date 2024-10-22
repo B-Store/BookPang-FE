@@ -5,4 +5,21 @@
   z-index: 1;
   position: absolute;
   top: 6.2em;
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+
+  .category-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    cursor: pointer;
+  }
+
+  .category-list-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    cursor: pointer;
+  }
 }

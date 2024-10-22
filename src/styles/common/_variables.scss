@@ -15,3 +15,199 @@ $colors: map-merge(
     toggle-border: map-get($colors, input-border),
   )
 );
+
+// 타이포그래피
+
+// 자간
+$korean-letter-spacing: -0.025rem;
+
+$font-weights: (
+  bold: 700px,
+  medium: 500px,
+  regular: 400px,
+);
+
+$font-colors: (
+  main-text-color: #111111,
+  sub-text-color: #505050,
+  disabled-text-color: #767676,
+  extra-disabled-text-color: #999999,
+);
+
+// PC 폰트
+$pc-font-sizes: (
+  title-1: 2rem,
+  title-2: 1.75rem,
+  title-3: 1.5rem,
+  title-4: 1.25rem,
+  body-1: 1rem,
+  body-2: 0.9375rem,
+  body-3: 0.875rem,
+  body-4: 0.8125rem,
+  caption-1: 0.8125rem,
+  caption-2: 0.75rem,
+  caption-3: 0.6875rem,
+  button-1: 1rem,
+  button-2: 0.875rem,
+  button-3: 0.8125rem,
+  button-4: 0.75rem,
+);
+
+$pc-line-heights: (
+  title-1: 2.625rem,
+  title-2: 2.375rem,
+  title-3: 2.125rem,
+  title-4: 1.75rem,
+  body-1: 1.5rem,
+  body-2: 1.375rem,
+  body-3: 1.25rem,
+  body-4: 1.125rem,
+  caption-1: 1.125rem,
+  caption-2: 1.125rem,
+  caption-3: 1rem,
+  button-1: 1.5rem,
+  button-2: 1.25rem,
+  button-3: 1.125rem,
+  button-4: 1.125rem,
+);
+
+// 모바일 폰트
+$mobile-font-sizes: (
+  title-1: 1.5rem,
+  title-2: 1.25rem,
+  title-3: 1.125rem,
+  title-4: 1rem,
+  body-1: 0.9375rem,
+  body-2: 0.875rem,
+  body-3: 0.8125rem,
+  body-4: 0.75rem,
+  caption-1: 0.8125rem,
+  caption-2: 0.75rem,
+  caption-3: 0.6875rem,
+  button-1: 1rem,
+  button-2: 0.875rem,
+  button-3: 0.8125rem,
+  button-4: 0.75rem,
+);
+
+$mobile-line-heights: (
+  title-1: 2.125rem,
+  title-2: 1.75rem,
+  title-3: 1.625rem,
+  title-4: 1.5rem,
+  body-1: 1.375rem,
+  body-2: 1.25rem,
+  body-3: 1.125rem,
+  body-4: 1.125rem,
+  caption-1: 1.125rem,
+  caption-2: 1.125rem,
+  caption-3: 1rem,
+  button-1: 1.5rem,
+  button-2: 1.25rem,
+  button-3: 1.125rem,
+  button-4: 1.125rem,
+);
+
+// 폰트 굵기, 사이즈, 행간을 필수 인자로 받고, 자간은 선택으로 받는다(영문은 자간이 없기때문)
+// PC 폰트 믹스인
+@mixin pc-font-styles(
+  $font-weight,
+  $font-size,
+  $line-height,
+  $font-colors,
+  $letter-spacing: null
+) {
+  font-weight: $font-weight;
+  font-size: $font-size;
+  line-height: $line-height;
+  color: $font-colors;
+  @if $letter-spacing {
+    letter-spacing: $letter-spacing;
+  }
+}
+
+// Mobile 폰트 믹스인
+@mixin mobile-font-styles(
+  $font-weight,
+  $font-size,
+  $line-height,
+  $font-colors,
+  $letter-spacing: null
+) {
+  font-weight: $font-weight;
+  font-size: $font-size;
+  line-height: $line-height;
+  color: $font-colors;
+  @if $letter-spacing {
+    letter-spacing: $letter-spacing;
+  }
+}
+
+// 컬러 팔레트
+$color-palette: (
+  brand-main-color: #fce15c,
+  brand-sub-color-1: #9f5cfa,
+  brand-sub-color-2: #f59917,
+  bg-light-color: #f7f7fb,
+  bg-regular-color: #f1f1f5,
+  bg-white-color: #ffffff,
+  bg-black-opacity-85: #000000,
+  font-05-gray-disabled: #999999,
+  font-04-gray: #767676,
+  font-03-gray: #505050,
+  font-02-black: #111111,
+  font-01-white: #ffffff,
+  line-white-color: #ffffff,
+  line-black-color: #111111,
+  line-disabled-color: #cacad7,
+  line-regular-color: #e5e5ec,
+  line-light-color: #f1f1f5,
+  system-red-50: #fcecee,
+  system-red-100: #f7cfd3,
+  system-red-200: #e39e9c,
+  system-red-300: #d77976,
+  system-red-400: #de5e56,
+  system-red-500: #e15241,
+  system-red-600: #d3483e,
+  system-red-700: #c23e38,
+  system-red-800: #b63731,
+  system-red-900: #b71c1c,
+  system-blue-50: #e6f2fc,
+  system-blue-100: #c2ddf8,
+  system-blue-200: #9cc9f5,
+  system-blue-300: #77b4f0,
+  system-blue-400: #5da4ef,
+  system-blue-500: #4896ec,
+  system-blue-600: #4188de,
+  system-blue-700: #3776cb,
+  system-blue-800: #2f66ba,
+  system-blue-900: #1f489b,
+  system-black-50: #f1f1f5,
+  system-black-100: #e1e1e1,
+  system-black-200: #bbbbbb,
+  system-black-300: #999999,
+  system-black-400: #888888,
+  system-black-500: #767676,
+  system-black-600: #666666,
+  system-black-700: #505050,
+  system-black-800: #333333,
+  system-black-900: #111111,
+  system-blue-black-50: #edeff1,
+  system-blue-black-100: #d1d8dc,
+  system-blue-black-200: #b3bec4,
+  system-blue-black-300: #94a4ad,
+  system-blue-black-400: #7d8f9b,
+  system-blue-black-500: #667c89,
+  system-blue-black-600: #596d79,
+  system-blue-black-700: #495a63,
+  system-blue-black-800: #3a474e,
+  system-blue-black-900: #283237,
+);
+
+@mixin color-styles($color-palette, $property: background-color) {
+  @if $property == background-color {
+    background-color: $color-palette;
+  } @else if $property == border-color {
+    border-color: $color-palette;
+  }
+}

@@ -1,10 +1,9 @@
-"use client";
-import { MainCarouselItem } from "@/types/bookType";
-import { mainItem } from "@/utils/temp";
-import Image from "next/image";
-import React, { useEffect, useState } from "react";
 import styles from "@/styles/main/mainCarousel.module.scss";
+import { MainCarouselItem } from "@/types/bookTypes";
 import { categoryNameChangeHandler, discountRateHandler } from "@/utils/common";
+import { mainItem } from "@/utils/temp/mainCarousel";
+import Image from "next/image";
+import { useState } from "react";
 
 const MainCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -20,28 +19,27 @@ const MainCarousel = () => {
     setCurrentIndex(prev => (prev - 1 + mainItem.length) % mainItem.length);
   };
 
-  // 캐러샐 책 종류 버튼
-  const CarouselMenuBtnHandler = (index: number) => {
-    setSelectedMenuIndex(index);
-  };
-
+  const carouselMenu = ["전체", "국내도서", "외국도서", "eBook"];
   return (
     <div className={styles["main-carousel-wrap"]}>
-      <div className={styles["main-carousel-title-wrap"]}>
+      <div className={styles["main-carousel-wrap-title"]}>
         <p className={styles["main-carousel-title"]}>
           북팡에서 꾸준히 사랑받는 책
         </p>
         <ul className={styles["main-carousel-menu-btn"]}>
-          {["전체", "국내도서", "외국도서", "eBook"].map((item, index) => (
-            <li
-              key={index}
-              onClick={() => CarouselMenuBtnHandler(index)}
-              className={selectedMenuIndex === index ? styles["active"] : ""}
-            >
-              {item}
-            </li>
-          ))}
+          {carouselMenu.map((item, idx) => {
+            return (
+              <li
+                key={idx}
+                onClick={() => setSelectedMenuIndex(idx)}
+                className={selectedMenuIndex === idx ? styles["active"] : ""}
+              >
+                {item}
+              </li>
+            );
+          })}
         </ul>
+        <span>더보기 +</span>
       </div>
 
       <div className={styles["main-carousel-container"]}>

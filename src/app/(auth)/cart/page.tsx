@@ -1,6 +1,6 @@
 "use client";
 
-import { BookList } from "@/types/bookType";
+import { CartBookList } from "@/types/bookTypes";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
@@ -80,7 +80,7 @@ const CartPage = () => {
     },
   ];
 
-  const [checkItems, setCheckItems] = useState<BookList[]>([]);
+  const [checkItems, setCheckItems] = useState<CartBookList[]>([]);
   const [productCounts, setProductCounts] = useState<{ [key: number]: number }>(
     {}
   );
@@ -105,7 +105,7 @@ const CartPage = () => {
   // 개별 선택
   const onCheckedHandler = (
     e: ChangeEvent<HTMLInputElement>,
-    item: BookList
+    item: CartBookList
   ) => {
     if (e.target.checked) {
       setCheckItems(prev => [...prev, item]);

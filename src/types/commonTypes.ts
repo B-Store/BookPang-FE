@@ -1,5 +1,5 @@
 import { FieldError, UseFormRegister } from "react-hook-form";
-import type { SignUser } from "@/types/signType";
+import type { SignUser } from "@/types/signTypes";
 
 export interface SignFormType {
   signFn: (data: any) => any;

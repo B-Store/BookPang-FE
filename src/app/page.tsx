@@ -1,9 +1,9 @@
-import Image from "next/image";
-import React from "react";
+"use client";
+import BookPang from "@/../public/assets/video/BookPang.gif";
 import Header from "@/components/layout/Header";
 import MainCarousel from "@/components/main/MainCarousel";
-import BookPang from "@/../public/assets/video/BookPang.gif";
 import styles from "@/styles/main/main.module.scss";
+import Image from "next/image";
 
 const HomePage = () => {
   return (
