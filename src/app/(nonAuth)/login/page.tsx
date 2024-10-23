@@ -1,21 +1,15 @@
 "use client";
 
 import React from "react";
-
-import SignAlert from "@/components/sign/SignAlert";
 import SignForm from "@/components/sign/SignForm";
-import { postLogin } from "@/api/signApi/loginApi";
-import { useQueryClient, useMutation } from "@tanstack/react-query";
-import { revalidatePath } from "next/cache";
+import { useSignUser } from "@/store/signUpStore";
+import { useMutationHook } from "@/hooks/useSignMutationHook";
 
 const LoginPage = () => {
-  const queryClient = useQueryClient();
-  const { mutate: login } = useMutation({
-    mutationFn: postLogin,
-    onSuccess: () => void revalidatePath("/login"),
-  });
+  const { id, password } = useSignUser();
+  const { login } = useMutationHook();
 
-  const loginBtn = () => {};
+  const loginBtn = () => login({ id, password });
 
   return (
     <div className="main-pang">

@@ -2,23 +2,15 @@
 
 import SignForm from "@/components/sign/SignForm";
 import React from "react";
-import { useQueryClient, useMutation } from "@tanstack/react-query";
-import {
-  getCheckLoginId,
-  postSignUp,
-  postVerifyPhone,
-  postVerifyCode,
-} from "@/api/signApi/signUpApi";
-import { revalidatePath } from "next/cache";
+import { useMutationHook } from "@/hooks/useSignMutationHook";
+import { useSignUser } from "@/store/signUpStore";
+
 const SignUpPage = () => {
-  const queryClient = useQueryClient();
+  const { signUp } = useMutationHook();
+  const { id, password, nickName, phoneNumber } = useSignUser();
 
-  const { mutate: signUp } = useMutation({
-    mutationFn: postSignUp,
-    onSuccess: () => void revalidatePath("/sign-up"),
-  });
+  const signUpBtn = async () => signUp({ id, password, nickName, phoneNumber });
 
-  const signUpBtn = async () => {};
   return (
     <div className="main-pang">
       <SignForm
