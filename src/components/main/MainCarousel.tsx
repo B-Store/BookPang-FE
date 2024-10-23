@@ -1,3 +1,4 @@
+"use client";
 import styles from "@/styles/main/mainCarousel.module.scss";
 import { MainCarouselItem } from "@/types/bookTypes";
 import { categoryNameChangeHandler, discountRateHandler } from "@/utils/common";

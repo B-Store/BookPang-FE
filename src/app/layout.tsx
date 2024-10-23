@@ -18,7 +18,7 @@ export default function RootLayout({
     <html lang="ko">
       <body>
         <QueryProvider>
-          <Header />
+          {/* <Header /> */}
           <main className="main">{children}</main>
         </QueryProvider>
       </body>

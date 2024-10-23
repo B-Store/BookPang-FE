@@ -1,16 +1,15 @@
 import { create } from "zustand";
+import { SignUserType, SignUserInintialType } from "@/types/signTypes";
 
-type UserData = {};
-
-const sinUpUserinitialData = {
+const sinUserinitialData: SignUserInintialType = {
   id: "",
   password: "",
-  confirmPassoword: "",
   nickName: "",
   phoneNumber: "",
+  setSignUserData: () => {},
 };
 
-export const signUpUser = create<UserData>(set => ({
-  ...sinUpUserinitialData,
-  setSignUpUserData: () => {},
+export const useSignUser = create<SignUserInintialType>(set => ({
+  ...sinUserinitialData,
+  setSignUserData: (userData: SignUserType) => set({ ...userData }),
 }));

@@ -1,3 +1,4 @@
+"use client";
 import logo from "@/../public/assets/images/logo.svg";
 import styles from "@/styles/components/layout/header.module.scss";
 import Image from "next/image";

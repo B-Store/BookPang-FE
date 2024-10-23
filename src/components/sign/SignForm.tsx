@@ -6,32 +6,21 @@ import SignInput from "@/components/sign/SignInput";
 import Button from "@/components/common/Button";
 
 import { schema } from "@/lib/userSchema";
-
+import { useSignUser } from "@/store/signUpStore";
 import {
   getCheckLoginId,
-  postSignUp,
   postVerifyPhone,
   postVerifyCode,
 } from "@/api/signApi/signUpApi";
-import type { SignFormType, SignFormPropsType } from "@/types/commonTypes";
-import type { SignUser } from "@/types/signTypes";
 
-interface UserInfo {
-  id: string;
-  password: string;
-  nickName: string | undefined;
-  phoneNumber: string | undefined;
-}
+import type { SignFormType, SignFormPropsType } from "@/types/commonTypes";
+import type { SignUserType } from "@/types/signTypes";
 
 const SignForm = ({ signFn, selectLabel, ...props }: SignFormType) => {
   const [passwordType, setPasswordType] = useState("password");
   const [confirmPasswordType, setConfirmPasswordType] = useState("password");
-  const [userInfo, setUserInfo] = useState<UserInfo>({
-    id: "",
-    password: "",
-    nickName: undefined,
-    phoneNumber: undefined,
-  });
+
+  const { setSignUserData } = useSignUser();
 
   const {
     register,
@@ -40,16 +29,19 @@ const SignForm = ({ signFn, selectLabel, ...props }: SignFormType) => {
     getValues,
     formState: { errors },
     setValue,
-  } = useForm<SignUser>({
+  } = useForm<SignUserType>({
     mode: "onChange",
     resolver: yupResolver(schema),
   });
 
+  const { id, password, nickName, phoneNumber } = getValues();
+
+  useEffect(() => {
+    setSignUserData({ id, password, nickName, phoneNumber });
+  }, [id, password, nickName, phoneNumber, setSignUserData]);
+
   const { confirmPassword }: SignFormPropsType = props;
 
-  const { id, password, nickName, phoneNumber } = getValues();
-  console.log(id);
-  console.log(phoneNumber);
   const changePasswordType = () =>
     passwordType === "password"
       ? setPasswordType("text")
@@ -62,9 +54,7 @@ const SignForm = ({ signFn, selectLabel, ...props }: SignFormType) => {
 
   const idCheckFn = (getId: string) => getCheckLoginId(getId);
 
-  const verifyPhone = (phone: string) => {
-    postVerifyPhone(phone);
-  };
+  const verifyPhone = (phone: string) => postVerifyPhone(phone);
 
   return (
     <>
@@ -73,7 +63,7 @@ const SignForm = ({ signFn, selectLabel, ...props }: SignFormType) => {
         <SignInput
           register={register}
           id="id"
-          getFunc={idCheckFn}
+          getFunc={() => idCheckFn(id)}
           type="text"
           placeholder="아이디 입력"
           errors={errors.id}
@@ -109,6 +99,9 @@ const SignForm = ({ signFn, selectLabel, ...props }: SignFormType) => {
             <SignInput
               register={register}
               type="text"
+              getFunc={() =>
+                phoneNumber ? verifyPhone(phoneNumber) : Promise.resolve()
+              }
               phoneNumber="phoneNumber"
               placeholder="숫자만 입력해 주세요"
               errors={errors.phoneNumber}

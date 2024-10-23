@@ -1,6 +1,7 @@
 import axi from "@/lib/axiosInterceptors";
 //로그인 중복 체크
-import { ResMessage, GetSignType } from "@/types/resType";
+import type { ResMessage, GetSignType } from "@/types/resType";
+import type { SignUserType } from "@/types/signTypes";
 
 const getCheckLoginId: GetSignType = async (loginId: string) => {
   try {
@@ -14,21 +15,19 @@ const getCheckLoginId: GetSignType = async (loginId: string) => {
   }
 };
 
-const postSignUp = (userInfo: {
-  loginId: string;
+const postSignUp = async (userInfo: SignUserType): Promise<void> => {
+  await axi.post(`/auth/sign-up`, userInfo);
+};
+
+const postVerifyPhone = async (phoneNumber: string) => {
+  await axi.post(`/auth/verify-code`, phoneNumber);
+};
+
+const postVerifyCode = async (verifyCode: {
+  code: number;
   phoneNumber: string;
-  password: string;
-  nickname: string;
 }) => {
-  axi.post(`/auth/sign-up`, userInfo);
-};
-
-const postVerifyPhone = (phoneNumber: string) => {
-  axi.post(`/auth/verify-code`, phoneNumber);
-};
-
-const postVerifyCode = (verifyCode: { code: number; phoneNumber: string }) => {
-  axi.post(`/auth/verify-phone`, verifyCode);
+  await axi.post(`/auth/verify-phone`, verifyCode);
 };
 
 export { getCheckLoginId, postSignUp, postVerifyPhone, postVerifyCode };

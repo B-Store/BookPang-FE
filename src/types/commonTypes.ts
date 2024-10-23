@@ -1,23 +1,22 @@
 import { FieldError, UseFormRegister } from "react-hook-form";
-import type { SignUser } from "@/types/signTypes";
+import type { SignUserType } from "@/types/signTypes";
 import { AxiosResponse } from "axios";
 import { ResMessage } from "@/types/resType";
 
-export interface SignFormType {
+interface SignFormType {
   signFn: (data: any) => any;
   confirmPassword?: string;
   selectLabel: string;
 }
 
-export interface SignFormPropsType {
+interface SignFormPropsType {
   confirmPassword?: string;
 }
 
-export interface SignInputType {
-  register: UseFormRegister<SignUser>;
+interface SignInputType {
+  register: UseFormRegister<SignUserType>;
   changePasswordType?: () => void;
-  getFunc: (data: string) => Promise<ResMessage>;
-  func?: () => void;
+  getFunc?: (data: string) => Promise<ResMessage | void>;
   id?: string;
   password?: string;
   passwordType?: string;
@@ -29,3 +28,5 @@ export interface SignInputType {
   errors?: FieldError;
   placeholder?: string;
 }
+
+export type { SignFormType, SignFormPropsType, SignInputType };

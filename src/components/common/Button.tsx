@@ -4,23 +4,25 @@ import { ResMessage } from "@/types/resType";
 const Button = ({
   label,
   getFunc,
-  func,
   type = "submit",
 }: {
   label?: string;
-  getFunc: (data: string) => Promise<ResMessage>;
-  func?: () => void;
+  getFunc?: (data: string) => Promise<ResMessage | void>;
   type?: "button" | "submit" | "reset";
 }) => {
   const content = label || "중복확인";
-  const id = "keumm9612";
-
+  const handleClick = async () => {
+    if (getFunc) {
+      const response = getFunc;
+      return response;
+    }
+  };
   return (
     <button
       className={
         content === "중복확인" ? styles["sign-box-btn__dup"] : "btn__big"
       }
-      onClick={() => getFunc(id)}
+      onClick={handleClick}
       type={type}
     >
       {content}

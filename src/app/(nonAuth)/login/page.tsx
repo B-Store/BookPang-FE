@@ -5,14 +5,17 @@ import React from "react";
 import SignAlert from "@/components/sign/SignAlert";
 import SignForm from "@/components/sign/SignForm";
 import { postLogin } from "@/api/signApi/loginApi";
-import { useMutation } from "@tanstack/react-query";
+import { useQueryClient, useMutation } from "@tanstack/react-query";
+import { revalidatePath } from "next/cache";
 
 const LoginPage = () => {
-  const { mutate: login } = useMutation({ mutationFn: postLogin });
+  const queryClient = useQueryClient();
+  const { mutate: login } = useMutation({
+    mutationFn: postLogin,
+    onSuccess: () => void revalidatePath("/login"),
+  });
 
-  const loginBtn = () => {
-    login({ loginId: "string;", password: "string;" });
-  };
+  const loginBtn = () => {};
 
   return (
     <div className="main-pang">

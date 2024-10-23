@@ -9,14 +9,8 @@ import star from "../../../public/assets//images/sign/necessaryStar.svg";
 import warning from "../../../public/assets//images/sign/warning.svg";
 import type { SignInputType } from "@/types/commonTypes";
 import type { RegisterContentType } from "@/types/signTypes";
-import {
-  getCheckLoginId,
-  postSignUp,
-  postVerifyPhone,
-  postVerifyCode,
-} from "@/api/signApi/signUpApi";
 
-import Button from "../common/Button";
+import Button from "@/components/common/Button";
 
 const SignInput = ({ register, type, errors, ...props }: SignInputType) => {
   const {
@@ -27,7 +21,6 @@ const SignInput = ({ register, type, errors, ...props }: SignInputType) => {
     phoneNumber,
     placeholder,
     getFunc,
-    func,
     changePasswordType,
   } = props;
   const registerContent =
