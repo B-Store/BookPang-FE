@@ -1,52 +1,46 @@
-import React, { useState } from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import SignInput from "@/components/sign/SignInput";
-import Button from "@/components/commen/Button";
-
 import { yupResolver } from "@hookform/resolvers/yup";
-import { schema } from "@/lib/userSchema";
-import ableEye from "@/../public/assets/images/sign/ableEye.svg";
+import SignInput from "@/components/sign/SignInput";
+import Button from "@/components/common/Button";
 
-import disableEye from "@/../public/assets/images/sign/disableEye.svg";
+import { schema } from "@/lib/userSchema";
+import { useSignUser } from "@/store/signUpStore";
+import {
+  getCheckLoginId,
+  postVerifyPhone,
+  postVerifyCode,
+} from "@/api/signApi/signUpApi";
 
 import type { SignFormType, SignFormPropsType } from "@/types/commonTypes";
-import type { SignUser } from "@/types/signTypes";
-import Image from "next/image";
+import type { SignUserType } from "@/types/signTypes";
 
-const SignForm = ({
-  signFn,
-  confirmPasswordErrorMessage,
-  nickNameErrorMessage,
-  phoneNumberErrorMessage,
-  selectLabel,
-  ...props
-}: SignFormType) => {
+const SignForm = ({ signFn, selectLabel, ...props }: SignFormType) => {
   const [passwordType, setPasswordType] = useState("password");
   const [confirmPasswordType, setConfirmPasswordType] = useState("password");
+
+  const { setSignUserData } = useSignUser();
 
   const {
     register,
     handleSubmit,
     watch,
+    getValues,
     formState: { errors },
     setValue,
-  } = useForm<SignUser>({
+  } = useForm<SignUserType>({
     mode: "onChange",
     resolver: yupResolver(schema),
   });
 
-  const {
-    confirmPassword,
-    confirmPasswordPlaceholder,
-    nickNameType,
-    nickName,
-    nickNamePlaceholder,
-    phoneNumberType,
-    phoneNumber,
-    phoneNumberPlaceholder,
-  }: SignFormPropsType = props;
+  const { id, password, nickName, phoneNumber } = getValues();
 
-  const duplicateCheck = () => {};
+  useEffect(() => {
+    setSignUserData({ id, password, nickName, phoneNumber });
+  }, [id, password, nickName, phoneNumber, setSignUserData]);
+
+  const { confirmPassword }: SignFormPropsType = props;
 
   const changePasswordType = () =>
     passwordType === "password"
@@ -58,6 +52,10 @@ const SignForm = ({
       ? setConfirmPasswordType("text")
       : setConfirmPasswordType("password");
 
+  const idCheckFn = (getId: string) => getCheckLoginId(getId);
+
+  const verifyPhone = (phone: string) => postVerifyPhone(phone);
+
   return (
     <>
       <form className="pang-form" onSubmit={handleSubmit(signFn)}>
@@ -65,56 +63,52 @@ const SignForm = ({
         <SignInput
           register={register}
           id="id"
+          getFunc={() => idCheckFn(id)}
           type="text"
           placeholder="아이디 입력"
           errors={errors.id}
         />
-        <Button duplicateFn={duplicateCheck} type="button" />
+
         <SignInput
           register={register}
-          type="password"
+          type={passwordType}
           password="password"
-          placeholder="password"
+          placeholder="비밀번호 입력"
+          changePasswordType={changePasswordType}
           errors={errors.password}
         />
-        <Image alt="보이기" src={ableEye} onClick={changePasswordType} />
-        <Image alt="가리기" src={disableEye} onClick={changePasswordType} />
+
         {confirmPassword && (
           <>
             <SignInput
               register={register}
               type={confirmPasswordType}
               confirmPassword={confirmPassword}
-              placeholder={confirmPasswordPlaceholder}
+              placeholder="비밀번호 확인"
+              changePasswordType={changeConfirmPasswordType}
               errors={errors.confirmPassword}
             />
-            <Image
-              alt="보이기"
-              src={ableEye}
-              onClick={changeConfirmPasswordType}
-            />
-            <Image
-              alt="가리기"
-              src={disableEye}
-              onClick={changeConfirmPasswordType}
-            />
+
             <SignInput
               register={register}
-              type={nickNameType}
-              nickName={nickName}
-              placeholder={nickNamePlaceholder}
+              type="text"
+              nickName="nickName"
+              placeholder="닉네임 입력"
               errors={errors.nickName}
             />
             <SignInput
               register={register}
-              type={phoneNumberType}
-              phoneNumber={phoneNumber}
-              placeholder={phoneNumberPlaceholder}
+              type="text"
+              getFunc={() =>
+                phoneNumber ? verifyPhone(phoneNumber) : Promise.resolve()
+              }
+              phoneNumber="phoneNumber"
+              placeholder="숫자만 입력해 주세요"
               errors={errors.phoneNumber}
             />
           </>
         )}
-        <Button type="submit" label={selectLabel} />
+        <Button label={selectLabel} />
       </form>
     </>
   );

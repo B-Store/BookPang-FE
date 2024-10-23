@@ -1,0 +1,21 @@
+@import "./variables";
+
+.btn__big {
+  border: 2px solid map-get($map: $colors, $key: input-border-none);
+  position: absolute;
+  border-radius: 0.5rem;
+  width: 35%;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.5rem;
+  height: 10%;
+  color: map-get($map: $colors, $key: button-disabled-text);
+}
+
+.btn__small {
+  border: 2px solid map-get($map: $colors, $key: input-border-none);
+  position: absolute;
+  top: 17%;
+  left: 34%;
+  z-index: 1;
+}
