@@ -17,7 +17,7 @@ export const schema = yup
       .matches(
         /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[~@#$!%*?&])[a-zA-Z\d~@#$!%*?&]+$/,
         {
-          message: "영어, 숫자, 정규식을 사용해 주세요.",
+          message: "영어, 숫자, 특수 문자를 사용해 주세요.",
         }
       )
       .min(8, "길이가 너무 짧습니다.")
@@ -28,7 +28,7 @@ export const schema = yup
       .matches(
         /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[~@#$!%*?&])[a-zA-Z\d~@#$!%*?&]+$/,
         {
-          message: "영어, 숫자, 정규식을 사용해 주세요.",
+          message: "영어, 숫자, 특수 문자를 사용해 주세요.",
         }
       )
       .min(8, "길이가 너무 짧습니다.")
@@ -47,7 +47,7 @@ export const schema = yup
       .string()
       .required("핸드폰 번호를 입력해 주세요.")
       .matches(/^[0-9]*$/, {
-        message: "영어, 숫자, 정규식을 사용해 주세요.",
+        message: "숫자만 사용해 주세요.",
       })
       .optional(),
   })

@@ -1,4 +1,5 @@
-"use client";
+import React from "react";
+// import "@/styles/main/main.scss";
 import BookPang from "@/../public/assets/video/BookPang.gif";
 import Header from "@/components/layout/Header";
 import MainCarousel from "@/components/main/MainCarousel";

@@ -1,23 +1,4 @@
-@import "./variables";
-
-// .sign-input {
-//   border: 2px solid map-get($colors, input-border-none);
-//   border-radius: 8px;
-//   width: 100%;
-//   height: 70%;
-// }
-.sign-content {
-  width: 30rem;
-  height: 5rem;
-
-  &-title {
-    display: inline-block;
-  }
-
-  &-input {
-    border: 2px solid map-get($colors, input-border-none);
-    border-radius: 8px;
-    width: 100%;
-    height: 50%;
-  }
+.content__input {
+  width: 100%;
+  padding: 0.5rem 1rem;
 }

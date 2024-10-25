@@ -1,0 +1,59 @@
+@import "@/../../../common/variables";
+
+.sign-box {
+  width: 100%;
+  height: 7rem;
+  position: relative;
+
+  &-title {
+    display: flex;
+    position: absolute;
+    top: 5%;
+    left: 3.3%;
+    z-index: 1;
+    font-size: 0.9rem;
+    color: map-get($map: $colors, $key: input-title);
+  }
+
+  &-input {
+    border: 2px solid map-get($colors, input-border-none);
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    height: 60%;
+  }
+
+  &__eye {
+    display: inline-block;
+    position: absolute;
+    top: 17%;
+    right: 2%;
+    z-index: 1;
+    :hover {
+      cursor: pointer;
+    }
+  }
+
+  &-error__message {
+    display: block;
+    height: 40%;
+  }
+
+  &-btn__dup {
+    border: 2px solid map-get($map: $colors, $key: input-border-none);
+    box-sizing: border-box;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #999999;
+    padding: 0.4rem 0.8rem;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    top: 16%;
+    right: 2%;
+    cursor: pointer;
+    width: 6rem;
+    height: 2rem;
+    z-index: 1;
+  }
+}

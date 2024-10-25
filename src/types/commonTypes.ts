@@ -1,48 +1,32 @@
 import { FieldError, UseFormRegister } from "react-hook-form";
-import type { SignUser } from "@/types/signTypes";
+import type { SignUserType } from "@/types/signTypes";
+import { AxiosResponse } from "axios";
+import { ResMessage } from "@/types/resType";
 
-export interface SignFormType {
+interface SignFormType {
   signFn: (data: any) => any;
   confirmPassword?: string;
-  nickName?: string;
-  phoneNumber?: string;
   selectLabel: string;
-  confirmPasswordRequired?: string;
-  nickNameRequired?: string;
-  phoneNumberRequired?: string;
-  confirmPasswordType?: string;
-  nickNameType?: string;
-  phoneNumberType?: string;
-  confirmPasswordPlaceholder?: string;
-  nickNamePlaceholder?: string;
-  phoneNumberPlaceholder?: string;
-  confirmPasswordMessage?: string;
-  nickNameMessage?: string;
-  phoneNumberMessage?: string;
-  confirmPasswordErrorMessage?: string;
-  nickNameErrorMessage?: string;
-  phoneNumberErrorMessage?: string;
 }
 
-export interface SignFormPropsType {
-  nickName?: string;
-  phoneNumber?: string;
+interface SignFormPropsType {
   confirmPassword?: string;
-  nickNameType?: string;
-  phoneNumberType?: string;
-  confirmPasswordPlaceholder?: string;
-  nickNamePlaceholder?: string;
-  phoneNumberPlaceholder?: string;
 }
 
-export interface SignInputType {
-  register: UseFormRegister<SignUser>;
+interface SignInputType {
+  register: UseFormRegister<SignUserType>;
+  changePasswordType?: () => void;
+  getFunc?: (data: string) => Promise<ResMessage | void>;
   id?: string;
   password?: string;
+  passwordType?: string;
+  confirmPasswordType?: string;
   nickName?: string;
   confirmPassword?: string;
   phoneNumber?: string;
-  type?: string;
+  type: string;
   errors?: FieldError;
   placeholder?: string;
 }
+
+export type { SignFormType, SignFormPropsType, SignInputType };
