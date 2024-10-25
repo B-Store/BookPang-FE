@@ -1,4 +1,4 @@
-import { getCategories } from "@/api/booksApi/books";
+import { getCategories } from "@/api/categoryApi/categories";
 import { BOOKS_QUERY_KEY } from "@/api/queryKey/queryKeys";
 import styles from "@/styles/components/toggleMenu/toggleMenu.module.scss";
 import { useQuery } from "@tanstack/react-query";

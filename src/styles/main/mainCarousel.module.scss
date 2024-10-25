@@ -1,3 +1,5 @@
+@import "../common/variables";
+
 .main-carousel-wrap {
   width: 1200px;
   margin: auto;
@@ -57,9 +59,13 @@
         }
 
         .first-info-title {
-          @include pc-font-styles(
-            map-get(font-style, body-1) map-get(font-weight, bold)
+          @include font-styles(
+            $font-map: $pc-korean-font,
+            $style-key: title-3,
+            $font-weight: font-bold,
+            $letter-spacing: $letter-spacing
           );
+          color: color-styles(system-blue-300);
         }
 
         .first-info-publisher {
