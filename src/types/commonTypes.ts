@@ -16,7 +16,8 @@ interface SignFormPropsType {
 interface SignInputType {
   register: UseFormRegister<SignUserType>;
   changePasswordType?: () => void;
-  getFunc?: (data: string) => Promise<ResMessage | void>;
+  getRedFunc?: () => void;
+  getFunc?: Promise<void> | (() => void);
   id?: string;
   password?: string;
   passwordType?: string;
