@@ -1,6 +1,7 @@
 import { getCategories } from "@/api/categoryApi/categories";
-import { BOOKS_QUERY_KEY } from "@/api/queryKey/queryKeys";
+import { QUERY_KEYS } from "@/api/queryKey/queryKeys";
 import styles from "@/styles/components/toggleMenu/toggleMenu.module.scss";
+import { Category } from "@/types/headerTypes";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -9,8 +10,8 @@ const ToggleMenu = () => {
 
   const router = useRouter();
 
-  const { data: categoryData } = useQuery<string[]>({
-    queryKey: [BOOKS_QUERY_KEY.headerCategories, selectedCategory],
+  const { data: categoryData } = useQuery<Category[]>({
+    queryKey: [QUERY_KEYS.headerCategories, selectedCategory],
     queryFn: () => getCategories(selectedCategory),
   });
 
@@ -38,11 +39,7 @@ const ToggleMenu = () => {
       >
         <div>국내도서 전체</div>
         {categoryData?.map((item, idx) => {
-          return (
-            <div key={idx}>
-              <div>{item}</div>
-            </div>
-          );
+          return <div key={idx}>{<div>{item.depth1}</div>}</div>;
         })}
       </div>
     </div>

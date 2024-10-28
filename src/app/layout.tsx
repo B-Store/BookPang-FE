@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import QueryProvider from "./provider";
-import Header from "@/components/layout/Header";
-
 import "@/styles/style.scss";
 
 export const metadata: Metadata = {
@@ -18,7 +16,6 @@ export default function RootLayout({
     <html lang="ko">
       <body>
         <QueryProvider>
-          {/* <Header /> */}
           <main className="main">{children}</main>
         </QueryProvider>
       </body>

@@ -2,7 +2,7 @@ import React from "react";
 import magnifier from "@/../public/assets/icons/magnifier.svg";
 import searchBarLine from "@/../public/assets/icons/searchBarLine.svg";
 import Image from "next/image";
-import styles from "@/styles/components/layout/searchBar.module.scss";
+import styles from "@/styles/components/layout/searchForm.module.scss";
 import { useForm } from "react-hook-form";
 
 const SearchBar = () => {

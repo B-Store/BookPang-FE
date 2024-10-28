@@ -1,7 +1,18 @@
 //1200px미만일 경우 실행
-.main {
+// .main {
+//   box-sizing: border-box;
+//   min-width: 1700px;
+// }
+
+body {
   box-sizing: border-box;
-  min-width: 1700px;
+  max-width: 1920px;
+  display: flex;
+  justify-content: center;
+}
+
+.main {
+  width: 100%;
 }
 
 .main-pang {

@@ -1,14 +1,24 @@
 "use client";
+import { getRecommended } from "@/api/query/main/carousel";
+import { QUERY_KEYS } from "@/api/queryKey/queryKeys";
 import styles from "@/styles/main/mainCarousel.module.scss";
 import { MainCarouselItem } from "@/types/bookTypes";
 import { categoryNameChangeHandler, discountRateHandler } from "@/utils/common";
 import { mainItem } from "@/utils/temp/mainCarousel";
+import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import { useState } from "react";
 
 const MainCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedMenuIndex, setSelectedMenuIndex] = useState(0);
+
+  const { data: recommendedData } = useQuery<any>({
+    queryKey: [QUERY_KEYS.mainRecommended],
+    queryFn: () => getRecommended(),
+  });
+
+  console.log("recommendedData", recommendedData);
 
   // 캐러샐 다음 버튼
   const nextItemHandler = () => {

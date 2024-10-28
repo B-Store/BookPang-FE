@@ -1,15 +1,10 @@
-import axios from "axios";
+import axi from "@/lib/axiosInterceptors";
 
 export const getCategories = async (param: string) => {
-  const response = await axios.get(
-    `${process.env.NEXT_PUBLIC_SERVER_URL}/books-main/categories?category=${param}`,
-    {
-      headers: {
-        "Content-Type": "application/json",
-        "ngrok-skip-browser-warning": "69420",
-      },
-    }
-  );
-
-  return response.data;
+  try {
+    const response = await axi.get(`/books-main/categories?category=${param}`);
+    return response.data;
+  } catch (error) {
+    console.log("error", error);
+  }
 };

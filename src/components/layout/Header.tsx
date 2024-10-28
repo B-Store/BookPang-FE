@@ -3,7 +3,7 @@ import logo from "@/../public/assets/images/logo.svg";
 import styles from "@/styles/components/layout/header.module.scss";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import SearchBar from "../common/SearchBar";
+import SearchForm from "../common/SearchForm";
 import NavBar from "./NavBar";
 
 const Header = () => {
@@ -12,9 +12,9 @@ const Header = () => {
   return (
     <div className={styles["header-wrap"]}>
       <div className={styles["header-top-wrap"]}>
-        <Image src={logo} alt="로고이미지" width={178} height={48} />
+        <Image src={logo} alt="로고이미지" width={178} height={24} />
 
-        <SearchBar />
+        <SearchForm />
 
         <div className={styles["header-top-links"]}>
           <span onClick={() => router.push("/login")}>회원가입/로그인</span>
