@@ -12,6 +12,7 @@ import type { RegisterContentType } from "@/types/signTypes";
 
 import Button from "@/components/common/Button";
 
+// 로그인에 필요한 모든 input 모듈화
 const SignInput = ({ register, type, errors, ...props }: SignInputType) => {
   const {
     id,
@@ -21,10 +22,13 @@ const SignInput = ({ register, type, errors, ...props }: SignInputType) => {
     phoneNumber,
     placeholder,
     getFunc,
+    getRedFunc,
     changePasswordType,
   } = props;
   const registerContent =
     id || password || confirmPassword || nickName || phoneNumber;
+  let func;
+  getFunc ? (func = getFunc) : (func = getRedFunc);
 
   return (
     <div className={styles["sign-box"]}>
@@ -32,6 +36,8 @@ const SignInput = ({ register, type, errors, ...props }: SignInputType) => {
         <p>{registerContent}</p>
         <Image src={star} alt="blue star" />
       </label>
+
+      {/* registerContent를 활용해 어떤 input이 들어올지 확인*/}
       <input
         className={styles["sign-box-input"]}
         {...register(registerContent as RegisterContentType, {
@@ -41,7 +47,7 @@ const SignInput = ({ register, type, errors, ...props }: SignInputType) => {
         type={type}
         placeholder={placeholder}
       />
-
+      {/* password 또는 confirmPassword를 활용한 비밀번호 확인 기능*/}
       {(password || confirmPassword) && (
         <div className={styles["sign-box__eye"]}>
           {type === "password" ? (
@@ -51,14 +57,15 @@ const SignInput = ({ register, type, errors, ...props }: SignInputType) => {
           )}
         </div>
       )}
-
+      {/* yup을 사용해 유저의 입력값이 맞았는지 확인*/}
       {errors?.message && (
         <p className={styles["sign-box-error__message"]}>
           <Image alt="경고" src={warning} />
           <span>{errors.message}</span>
         </p>
       )}
-      {(phoneNumber || id) && <Button getFunc={getFunc} type="button" />}
+      {/* phoneNumber와 id 에서만 검증 기능 필요 */}
+      {(phoneNumber || id) && <Button getFunc={func} type="button" />}
     </div>
   );
 };

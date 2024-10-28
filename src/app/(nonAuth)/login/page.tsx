@@ -6,9 +6,11 @@ import { useSignUser } from "@/store/signUpStore";
 import { useMutationHook } from "@/hooks/useSignMutationHook";
 
 const LoginPage = () => {
+  //주스탄드에 저장한 아이디 비밀번호 가져오기
   const { id, password } = useSignUser();
+  //tanstack을 활용한 로그인 기능
   const { login } = useMutationHook();
-
+  //가져온 값 넣어서 적용
   const loginBtn = () => login({ id, password });
 
   return (

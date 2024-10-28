@@ -5,13 +5,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import SignInput from "@/components/sign/SignInput";
 import Button from "@/components/common/Button";
 
+import { useMutationHook } from "@/hooks/useSignMutationHook";
 import { schema } from "@/lib/userSchema";
 import { useSignUser } from "@/store/signUpStore";
-import {
-  getCheckLoginId,
-  postVerifyPhone,
-  postVerifyCode,
-} from "@/api/signApi/signUpApi";
+import { getCheckLoginId } from "@/api/signApi/signUpApi";
 
 import type { SignFormType, SignFormPropsType } from "@/types/commonTypes";
 import type { SignUserType } from "@/types/signTypes";
@@ -19,6 +16,7 @@ import type { SignUserType } from "@/types/signTypes";
 const SignForm = ({ signFn, selectLabel, ...props }: SignFormType) => {
   const [passwordType, setPasswordType] = useState("password");
   const [confirmPasswordType, setConfirmPasswordType] = useState("password");
+  const { verifyPhone, verifyCode } = useMutationHook();
 
   const { setSignUserData } = useSignUser();
 
@@ -36,17 +34,18 @@ const SignForm = ({ signFn, selectLabel, ...props }: SignFormType) => {
 
   const { id, password, nickName, phoneNumber } = getValues();
 
+  //유저가 입력한 값을 최신화 시켜주기 위한 코드
   useEffect(() => {
     setSignUserData({ id, password, nickName, phoneNumber });
   }, [id, password, nickName, phoneNumber, setSignUserData]);
 
   const { confirmPassword }: SignFormPropsType = props;
-
+  //눈 클릭 시 입력한 비밀번호 보임
   const changePasswordType = () =>
     passwordType === "password"
       ? setPasswordType("text")
       : setPasswordType("password");
-
+  //눈 클릭 시 입력한 비밀번호 보임
   const changeConfirmPasswordType = () =>
     confirmPasswordType === "password"
       ? setConfirmPasswordType("text")
@@ -54,7 +53,7 @@ const SignForm = ({ signFn, selectLabel, ...props }: SignFormType) => {
 
   const idCheckFn = (getId: string) => getCheckLoginId(getId);
 
-  const verifyPhone = (phone: string) => postVerifyPhone(phone);
+  const verifyPhoneBtn = (phone: string) => verifyPhone(phone);
 
   return (
     <>
@@ -63,7 +62,7 @@ const SignForm = ({ signFn, selectLabel, ...props }: SignFormType) => {
         <SignInput
           register={register}
           id="id"
-          getFunc={() => idCheckFn(id)}
+          getRedFunc={() => idCheckFn(id)}
           type="text"
           placeholder="아이디 입력"
           errors={errors.id}
@@ -99,8 +98,10 @@ const SignForm = ({ signFn, selectLabel, ...props }: SignFormType) => {
             <SignInput
               register={register}
               type="text"
-              getFunc={() =>
-                phoneNumber ? verifyPhone(phoneNumber) : Promise.resolve()
+              getFunc={
+                phoneNumber
+                  ? () => verifyPhoneBtn(phoneNumber)
+                  : Promise.resolve()
               }
               phoneNumber="phoneNumber"
               placeholder="숫자만 입력해 주세요"
