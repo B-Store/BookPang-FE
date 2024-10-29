@@ -1,24 +1,55 @@
-//1200px미만일 경우 실행
-// .main {
-//   box-sizing: border-box;
-//   min-width: 1700px;
-// }
+:root {
+  --max-width: 120rem; // 1920px
+  --max-height: 67.5rem; // 1080px
+  --side-margin: 18.75rem; // 300px
+  --tablet: 48rem; // 768px
+}
 
-body {
-  box-sizing: border-box;
-  max-width: 1920px;
+.layout-wrapper {
+  width: 100%;
+  height: var(--max-height);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  width: 100%;
+  margin: 0 var(--side-margin);
+  width: calc(100% - (var(--side-margin) * 2));
+}
+
+.main-images-wrapper {
+  width: 100%;
   display: flex;
   justify-content: center;
+  background-color: color-styles(bg-light-color);
 }
 
-.main {
+.main-contents {
+  margin: 0 var(--side-margin);
+  width: calc(100% - (var(--side-margin) * 2));
+  flex: 1;
+}
+
+.footer {
   width: 100%;
 }
 
-.main-pang {
-  max-width: 1600px;
-  width: 100%;
+// 데스크탑 (1920px 이하)
+@media screen and (max-width: var(--max-width)) {
+  :root {
+    --side-margin: 15.625vw; // (300/1920 * 100)
+    --max-height: 56.25vw; // (1080/1920 * 100)
+  }
+}
 
-  margin: 50px auto;
-  position: relative;
+// 태블릿 이하
+@media screen and (max-width: var(--tablet)) {
+  :root {
+    --side-margin: 1.25rem; // 20px
+    --max-height: 100vh;
+  }
 }

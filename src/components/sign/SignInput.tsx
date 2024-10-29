@@ -1,15 +1,12 @@
 import React from "react";
-
 import Image from "next/image";
 import ableEye from "@/../public/assets/images/sign/ableEye.svg";
 import disableEye from "@/../public/assets/images/sign/disableEye.svg";
-
 import styles from "@/styles/components/sign/SignForm.module.scss";
 import star from "../../../public/assets//images/sign/necessaryStar.svg";
 import warning from "../../../public/assets//images/sign/warning.svg";
 import type { SignInputType } from "@/types/commonTypes";
 import type { RegisterContentType } from "@/types/signTypes";
-
 import Button from "@/components/common/Button";
 
 // 로그인에 필요한 모든 input 모듈화

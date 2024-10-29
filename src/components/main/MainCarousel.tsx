@@ -59,8 +59,8 @@ const MainCarousel = () => {
             src={mainItem[currentIndex].cover}
             className="w-full h-80"
             alt="캐러셀 메인 이미지"
-            width={183}
-            height={295}
+            width={160}
+            height={190}
           />
           <div className={styles["main-carousel-first-info"]}>
             <div className={styles["first-info-title"]}>
