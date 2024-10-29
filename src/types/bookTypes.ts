@@ -19,6 +19,15 @@ export type NewBooksCarouselType = {
   title: string;
 };
 
+export type BestSellerCarouselType = {
+  author: string;
+  cover: string;
+  createdAt: string;
+  id: number;
+  publisher: string;
+  title: string;
+};
+
 export type RecommendedCarouselPropsType = {
   recommendedData: RecommendedCarouselType[];
   currentIndex: number;
@@ -28,8 +37,14 @@ export type RecommendedCarouselPropsType = {
 
 export type NewBooksCarouselPropsType = {
   newBooksData: NewBooksCarouselType[];
-  isSecondPage: boolean;
+  isNewBookSecondPage: boolean;
   newBooksCarouselHandler: () => void;
+};
+
+export type BestSellerCarouselPropsType = {
+  newBooksData: BestSellerCarouselType[];
+  isBestSellerSecondPage: boolean;
+  bestSellerCarouselHandler: () => void;
 };
 
 export type BookListType = {

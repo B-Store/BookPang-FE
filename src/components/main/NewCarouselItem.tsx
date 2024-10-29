@@ -5,10 +5,10 @@ import styles from "@/styles/components/mainComponent/newBooks.module.scss";
 
 const NewCarouselItem = ({
   newBooksData,
-  isSecondPage,
+  isNewBookSecondPage,
   newBooksCarouselHandler,
 }: NewBooksCarouselPropsType) => {
-  const newBooksItems = isSecondPage
+  const newBooksItems = isNewBookSecondPage
     ? newBooksData.slice(10)
     : newBooksData.slice(0, 10);
 

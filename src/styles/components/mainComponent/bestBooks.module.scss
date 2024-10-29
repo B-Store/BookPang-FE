@@ -1,0 +1,51 @@
+.bestseller-wrapper {
+  display: flex;
+  margin-top: 50px;
+
+  &-box {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2개의 열 */
+    grid-template-rows: repeat(3, auto); /* 3개의 행 */
+    grid-auto-flow: column; /* 아이템을 열 단위로 배치 */
+    gap: 20px; /* 간격 설정 */
+  }
+  .bestseller-item {
+    width: 300px;
+    display: flex;
+    align-items: center;
+
+    &-info {
+      display: flex;
+      flex-direction: column;
+
+      .item-title-box {
+        width: 200px;
+
+        display: flex;
+        gap: 5px;
+
+        .bestseller-item-title {
+          width: 100px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+
+      .item-author-box {
+        display: flex;
+        gap: 5px;
+        width: 200px;
+
+        .bestseller-item-author,
+        .bestseller-item-publisher {
+          width: 100px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+}

@@ -18,7 +18,8 @@ import NewCarouselItem from "./NewCarouselItem";
 
 const MainCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isSecondPage, setIsSecondPage] = useState(false);
+  const [isNewBookSecondPage, setIsNewBookSecondPage] = useState(false);
+  const [isBestSellerSecondPage, setIsBestSellerSecondPage] = useState(false);
   // const [selectedMenuIndex, setSelectedMenuIndex] = useState(0);
 
   const { data: recommendedData } = useQuery<RecommendedCarouselType[]>({
@@ -53,9 +54,15 @@ const MainCarousel = () => {
       prev => (prev - 1 + recommendedData.length) % recommendedData.length
     );
   };
+
   // 신작도서 캐러셀 버튼
   const newBooksCarouselHandler = () => {
-    setIsSecondPage(prev => !prev);
+    setIsNewBookSecondPage(prev => !prev);
+  };
+
+  // 베스트셀러 캐러셀 버튼
+  const bestSellerCarouselHandler = () => {
+    setIsBestSellerSecondPage(prev => !prev);
   };
 
   // const carouselMenu = ["국내도서", "외국도서", "eBook"];
@@ -90,11 +97,15 @@ const MainCarousel = () => {
 
       <NewCarouselItem
         newBooksData={newBooksData}
-        isSecondPage={isSecondPage}
+        isNewBookSecondPage={isNewBookSecondPage}
         newBooksCarouselHandler={newBooksCarouselHandler}
       />
 
-      <BestCarouselItem />
+      <BestCarouselItem
+        newBooksData={newBooksData}
+        isBestSellerSecondPage={isBestSellerSecondPage}
+        bestSellerCarouselHandler={bestSellerCarouselHandler}
+      />
     </div>
   );
 };
