@@ -1,5 +1,6 @@
 export const QUERY_KEYS = {
   headerCategories: "header/categories",
-  mainRecommended: "main/carousel/recommended",
+  mainRecommendedBooks: "main/carousel/recommended",
   mainNewBooks: "main/carousel/newBooks",
+  mainBestBooks: "main/carousel/bestBooks",
 };

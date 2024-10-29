@@ -1,7 +1,7 @@
 import React from "react";
 
-const BastCarouselItem = () => {
+const BestCarouselItem = () => {
   return <div>BastCarouselItem</div>;
 };
 
-export default BastCarouselItem;
+export default BestCarouselItem;

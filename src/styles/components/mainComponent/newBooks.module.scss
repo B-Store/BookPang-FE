@@ -1,0 +1,20 @@
+.new-books-wrapper {
+  display: flex;
+
+  &-box {
+    width: 100%;
+
+    display: flex;
+  }
+  .new-books-item {
+    width: 100px;
+
+    &-publisher,
+    &-author,
+    &-title {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}

@@ -1,23 +1,22 @@
 import React from "react";
-import styles from "@/styles/main/mainCarousel.module.scss";
+import styles from "@/styles/components/mainComponent/recommendedBooks.module.scss";
 import Image from "next/image";
-import { MainCarouselPropsType } from "@/types/bookTypes";
+import { RecommendedCarouselPropsType } from "@/types/bookTypes";
 import { discountRateHandler } from "@/utils/common";
 
-const MainCarouselItem = ({
+const RecommendedCarouselItem = ({
   recommendedData,
   currentIndex,
-  nextItemHandler,
-  prevItemHandler,
-}: MainCarouselPropsType) => {
+  nextRecommendedHandler,
+  prevRecommendedHandler,
+}: RecommendedCarouselPropsType) => {
   return (
     <div>
       <div className={styles["main-carousel-container"]}>
         <div className={styles["main-carousel-first"]}>
           <Image
             src={recommendedData[currentIndex].cover}
-            className="w-full h-80"
-            alt="캐러셀 메인 이미지"
+            alt="추천 도서 첫번째 커버"
             width={160}
             height={190}
           />
@@ -45,7 +44,7 @@ const MainCarouselItem = ({
                 %
               </span>
               <span className={styles["first-info-price"]}>
-                {recommendedData[currentIndex].salePrice}
+                {recommendedData[currentIndex].salePrice.toLocaleString()}원
               </span>
             </div>
 
@@ -55,17 +54,20 @@ const MainCarouselItem = ({
           </div>
         </div>
         <div className={styles["main-carousel-list"]}>
-          <button onClick={prevItemHandler} className={styles["carousel-btn"]}>
+          <button
+            onClick={prevRecommendedHandler}
+            className={styles["carousel-btn"]}
+          >
             이전
           </button>
           {recommendedData
-            .filter((_: any, index: number) => index !== currentIndex)
+            .filter((_, index: number) => index !== currentIndex)
             .map(item => (
               <div key={item.id} className={styles["main-carousel"]}>
                 <Image
                   src={item.cover}
                   className="w-full h-80"
-                  alt="캐러셀 리스트 이미지"
+                  alt="추천도서 리스트 커버"
                   width={145}
                   height={184}
                 />
@@ -73,7 +75,10 @@ const MainCarouselItem = ({
               </div>
             ))}
 
-          <button onClick={nextItemHandler} className={styles["carousel-btn"]}>
+          <button
+            onClick={nextRecommendedHandler}
+            className={styles["carousel-btn"]}
+          >
             다음
           </button>
         </div>
@@ -82,4 +87,4 @@ const MainCarouselItem = ({
   );
 };
 
-export default MainCarouselItem;
+export default RecommendedCarouselItem;
