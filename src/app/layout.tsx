@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import QueryProvider from "./provider";
-import Header from "@/components/layout/Header";
-
 import "@/styles/style.scss";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import MainImages from "@/components/main/MainImages";
 
 export const metadata: Metadata = {
   title: "북팡",
@@ -18,8 +19,18 @@ export default function RootLayout({
     <html lang="ko">
       <body>
         <QueryProvider>
-          {/* <Header /> */}
-          <main className="main">{children}</main>
+          <div className="layout-wrapper">
+            <header className="header">
+              <Header />
+            </header>
+            <section className="main-images-wrapper">
+              <MainImages />
+            </section>
+            <main className="main-contents">{children}</main>
+            <footer className="footer">
+              <Footer />
+            </footer>
+          </div>
         </QueryProvider>
       </body>
     </html>

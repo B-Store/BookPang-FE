@@ -2,7 +2,7 @@
 
 import Modal from "@/components/common/Modal";
 // import "@/styles/modal.scss";
-import { BookList } from "@/types/bookTypes";
+import { BookListType } from "@/types/bookTypes";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
@@ -10,7 +10,7 @@ import { useState } from "react";
 const PaymentPage = () => {
   // const searchParams = useSearchParams();
   // const itemsParam = searchParams.get("item");
-  // const checkItems: BookList[] = itemsParam
+  // const checkItems: BookListType[] = itemsParam
   //   ? JSON.parse(decodeURIComponent(itemsParam))
   //   : [];
 
