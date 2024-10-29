@@ -27,13 +27,6 @@ $font-weights: (
   font-regular: 400,
 );
 
-$font-colors: (
-  main-text-color: #111111,
-  sub-text-color: #505050,
-  disabled-text-color: #767676,
-  extra-disabled-text-color: #999999,
-);
-
 // pc 폰트
 $pc-korean-font: (
   title-1: (
@@ -229,17 +222,12 @@ $color-palette: (
 @mixin font-styles(
   $font-map,
   $style-key,
-  $font-weight: null,
-  $font-color: null,
+  $font-weight: font-medium,
   $letter-spacing: null
 ) {
   font-size: map-get(map-get($font-map, $style-key), font-size);
   line-height: map-get(map-get($font-map, $style-key), line-height);
   font-weight: map-get($font-weights, $font-weight);
-
-  @if $font-colors {
-    color: map-get($font-colors, $font-color);
-  }
 
   @if $letter-spacing {
     letter-spacing: $letter-spacing;
@@ -247,12 +235,12 @@ $color-palette: (
 }
 
 // 컬러팔레트 믹스인
-@function color-styles($color) {
+@function get-color($color) {
   @return map-get($color-palette, $color);
 }
 
 @mixin color-styles($color) {
-  background-color: color-styles($color);
-  border-color: color-styles($color);
-  color: color-styles($color);
+  background-color: get-color($color);
+  border-color: get-color($color);
+  color: get-color($color);
 }

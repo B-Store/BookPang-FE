@@ -1,22 +1,32 @@
+@import "./../../common/variables";
+
 .header-wrap {
-  height: 100px;
+  width: 100%;
+  padding: 1.125rem 1.25rem;
   display: flex;
   flex-direction: column;
-
   justify-content: center;
 
-  .header-top-wrap {
+  &-top {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 335px;
-  }
-  .header-top-links {
-    font-size: 15px;
-    color: #8c9baf;
-    cursor: pointer;
-    display: flex;
-    gap: 16px;
+
+    &-links {
+      width: 7.25rem;
+      height: 1.25rem;
+      cursor: pointer;
+      display: flex;
+      gap: 16px;
+
+      @include font-styles(
+        $font-map: $pc-korean-font,
+        $style-key: body-3,
+        $font-weight: font-medium,
+        $letter-spacing: $letter-spacing
+      );
+      color: color-styles(font-03-gray);
+    }
   }
 }

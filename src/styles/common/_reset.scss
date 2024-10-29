@@ -1,13 +1,29 @@
 @font-face {
-  font-family: "MinSans-Regular";
-  src: url("/fonts/MinSans-Regular.woff") format("woff");
-  font-weight: normal;
+  font-family: "Pretendard";
+  src: url("@/../../../../public/fonts/Pretendard-Regular_1.woff")
+    format("woff");
+  font-weight: map-get($font-weights, font-regular);
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("@/../../../../public/fonts/Pretendard-Medium.woff") format("woff");
+  font-weight: map-get($font-weights, font-medium);
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("@/../../../../public/fonts/Pretendard-Bold_1.woff") format("woff");
+  font-weight: map-get($font-weights, font-bold);
   font-style: normal;
 }
 
 * {
+  font-family: "Pretendard", sans-serif;
   box-sizing: border-box;
-  margin: 0px;
+  margin: 0;
 }
 
 html,
@@ -95,7 +111,6 @@ video {
   padding: 0;
   border: 0;
   font-size: 100%;
-  font: inherit;
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */

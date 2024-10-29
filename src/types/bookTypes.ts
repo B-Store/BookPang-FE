@@ -1,4 +1,4 @@
-export type CartBookList = {
+export type CartBookListType = {
   title: string;
   link: string;
   author: string;
@@ -9,32 +9,35 @@ export type CartBookList = {
   categoryName: string;
 };
 
-export type MainCarouselItem = {
-  title: string;
-  link: string;
+export type MainCarouselItemType = {
   author: string;
-  pubDate: string;
+  cover: string;
   description: string;
-  isbn: string;
-  isbn13: string;
-  itemId: number;
-  priceSales: number;
-  priceStandard: number;
-  mallType: string;
-  stockStatus: string;
-  mileage: number;
-  cover: string;
-  categoryId: number;
-  categoryName: string;
+  discountRate: number;
+  id: number;
   publisher: string;
-  salesPoint: number;
-  adult: boolean;
-  fixedPrice: boolean;
-  customerReviewRank: number;
-  subInfo: {};
+  regularPrice: number;
+  salePrice: number;
+  title: string;
 };
 
-export type BookList = {
+export type MainCarouselPropsType = {
+  recommendedData: MainCarouselItemType[];
+  currentIndex: number;
+  nextItemHandler: () => void;
+  prevItemHandler: () => void;
+};
+
+export type NewBooksCarouselType = {
+  author: string;
+  cover: string;
+  createdAt: string;
+  id: number;
+  publisher: string;
+  title: string;
+};
+
+export type BookListType = {
   id: number;
   title: string;
   author: string;

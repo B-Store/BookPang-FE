@@ -13,29 +13,29 @@ const SearchBar = () => {
   };
 
   return (
-    <div className={styles["search-bar-wrap"]}>
-      <form
-        onSubmit={handleSubmit(searchSubmitHandler)}
-        className={styles["search-form"]}
-      >
-        <select {...register("searchType")} className={styles["search-select"]}>
-          <option value="통합검색">통합검색</option>
-        </select>
+    <form
+      onSubmit={handleSubmit(searchSubmitHandler)}
+      className={styles["search-form"]}
+    >
+      <select {...register("searchType")} className={styles["search-select"]}>
+        <option className={styles["search-select-options"]} value="통합검색">
+          통합검색
+        </option>
+      </select>
 
-        <Image src={searchBarLine} alt="검색버튼" width={0} height={14} />
+      <Image src={searchBarLine} alt="구분 선" width={0} height={14} />
 
-        <input
-          {...register("searchKeyword")}
-          className={styles["search-input"]}
-          type="text"
-          placeholder="⌜벌거벗은 세계사⌟ 한정판 출간"
-        />
+      <input
+        {...register("searchKeyword")}
+        className={styles["search-input"]}
+        type="text"
+        placeholder="⌜벌거벗은 세계사⌟ 한정판 출간"
+      />
 
-        <button className={styles["search-btn"]}>
-          <Image src={magnifier} alt="검색버튼" width={24} height={24} />
-        </button>
-      </form>
-    </div>
+      <button className={styles["search-btn"]}>
+        <Image src={magnifier} alt="검색버튼" width={24} height={24} />
+      </button>
+    </form>
   );
 };
 
