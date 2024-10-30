@@ -1,15 +1,4 @@
-export type CartBookListType = {
-  title: string;
-  link: string;
-  author: string;
-  itemId: number;
-  priceSales: number;
-  priceStandard: number;
-  cover: string;
-  categoryName: string;
-};
-
-export type MainCarouselItemType = {
+export type RecommendedCarouselType = {
   author: string;
   cover: string;
   description: string;
@@ -21,13 +10,6 @@ export type MainCarouselItemType = {
   title: string;
 };
 
-export type MainCarouselPropsType = {
-  recommendedData: MainCarouselItemType[];
-  currentIndex: number;
-  nextItemHandler: () => void;
-  prevItemHandler: () => void;
-};
-
 export type NewBooksCarouselType = {
   author: string;
   cover: string;
@@ -37,10 +19,63 @@ export type NewBooksCarouselType = {
   title: string;
 };
 
+export type BestSellerCarouselType = {
+  author: string;
+  averageRating: null;
+  cover: string;
+  createdAt: string;
+  deletedAt: null;
+  description: string;
+  id: number;
+  isbn13: string;
+  itemId: string;
+  link: string;
+  mileage: number;
+  publisher: string;
+  regularPrice: number;
+  salePrice: number;
+  searchTarget: string;
+  sourceType: string;
+  stockQuantity: number;
+  title: string;
+  totalQuantity: number;
+  updatedAt: string;
+};
+
+export type RecommendedCarouselPropsType = {
+  recommendedData: RecommendedCarouselType[];
+  currentIndex: number;
+  nextRecommendedHandler: () => void;
+  prevRecommendedHandler: () => void;
+};
+
+export type NewBooksCarouselPropsType = {
+  newBooksData: NewBooksCarouselType[];
+  isNewBookSecondPage: boolean;
+  newBooksCarouselHandler: () => void;
+};
+
+export type BestSellerCarouselPropsType = {
+  bestsellerData: BestSellerCarouselType[];
+  isBestSellerSecondPage: boolean;
+  bestSellerCarouselHandler: () => void;
+};
+
 export type BookListType = {
   id: number;
   title: string;
   author: string;
   publisher: string;
   cover: string;
+};
+
+export type CartBookListType = {
+  title: string;
+  link: string;
+  author: string;
+  itemId: number;
+  priceSales: number;
+  priceStandard: number;
+  cover: string;
+  categoryName: string;
 };

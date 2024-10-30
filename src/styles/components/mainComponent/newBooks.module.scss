@@ -1,0 +1,21 @@
+.new-books-wrapper {
+  display: flex;
+  margin-top: 50px;
+
+  &-box {
+    width: 100%;
+    display: flex;
+    gap: 20px; /* 간격 설정 */
+  }
+  .new-books-item {
+    width: 100px;
+
+    &-publisher,
+    &-author,
+    &-title {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}

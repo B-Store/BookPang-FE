@@ -19,3 +19,12 @@ export const getNewBooks = async () => {
     console.log("error", error);
   }
 };
+
+export const getBestsellers = async () => {
+  try {
+    const response = await axi.get("/books-main/bestsellers?page=1&limit=15");
+    return response.data.data;
+  } catch (error) {
+    console.log("error", error);
+  }
+};

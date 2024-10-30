@@ -8,7 +8,7 @@ import Button from "@/components/common/Button";
 import { useMutationHook } from "@/hooks/useSignMutationHook";
 import { schema } from "@/lib/userSchema";
 import { useSignUser } from "@/store/signUpStore";
-import { getCheckLoginId } from "@/api/signApi/signUpApi";
+import { getCheckLoginId } from "@/api/query/signUpApi";
 
 import type { SignFormType, SignFormPropsType } from "@/types/commonTypes";
 import type { SignUserType } from "@/types/signTypes";

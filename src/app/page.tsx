@@ -1,5 +1,5 @@
 import MainCarousel from "@/components/main/MainCarousel";
-import styles from "@/styles/main/main.module.scss";
+import styles from "@/styles/pages/main.module.scss";
 
 const HomePage = () => {
   return (

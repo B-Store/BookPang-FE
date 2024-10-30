@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "@/styles/components/sign/SignForm.module.scss";
+import styles from "@/styles/components/signComponent/SignForm.module.scss";
 import { ResMessage } from "@/types/resType";
 
 //버튼의 기본 타입은 submit이고 type을 따로 지정해주면 다른 기능으로 사용가능
