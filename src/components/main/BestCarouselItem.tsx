@@ -3,22 +3,33 @@ import React from "react";
 import styles from "@/styles/components/mainComponent/bestBooks.module.scss";
 import Image from "next/image";
 import Link from "next/link";
+import { useCustomRouter } from "@/hooks/useCustomRouter";
 
 const BestCarouselItem = ({
   bestsellerData,
   isBestSellerSecondPage,
   bestSellerCarouselHandler,
 }: BestSellerCarouselPropsType) => {
+  // 캐러셀 페이지 나누기
   const bestsellerItems = isBestSellerSecondPage
     ? bestsellerData.slice(12)
     : bestsellerData.slice(0, 12);
 
+  // 도서 순위(임시)
   const bookItem = 12;
   const currentPage = isBestSellerSecondPage ? 2 : 1;
 
+  const { navigateParams } = useCustomRouter();
+
+  // 도서 리스트 이동
+  const bookListNavigateHandler = () => {
+    const params = { key: "bookList", value: "bestsellerItems" };
+    navigateParams("/bookList", params); // 경로와 쿼리 매개변수 전달
+  };
+
   return (
     <div className={styles["bestseller-wrapper"]}>
-      <Link href={"/bookList"}>베스트셀러</Link>
+      <p onClick={bookListNavigateHandler}>베스트셀러</p>
       <button onClick={bestSellerCarouselHandler}>이전</button>
       <div className={styles["bestseller-wrapper-box"]}>
         {bestsellerItems.map((item, idx) => {

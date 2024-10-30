@@ -4,6 +4,7 @@ import Image from "next/image";
 import { RecommendedCarouselPropsType } from "@/types/bookTypes";
 import { discountRateHandler } from "@/utils/common";
 import Link from "next/link";
+import { useCustomRouter } from "@/hooks/useCustomRouter";
 
 const RecommendedCarouselItem = ({
   recommendedData,
@@ -11,9 +12,15 @@ const RecommendedCarouselItem = ({
   nextRecommendedHandler,
   prevRecommendedHandler,
 }: RecommendedCarouselPropsType) => {
+  // const {navigateParam}=useCustomRouter()
+
+  // const bookListNavigateHandler=()=>{
+
+  // }
+
   return (
     <div>
-      <Link href={"/bookList"}>편집장 PICK</Link>
+      <p>편집장 PICK</p>
       <div className={styles["main-carousel-container"]}>
         <div className={styles["main-carousel-first"]}>
           <Image
