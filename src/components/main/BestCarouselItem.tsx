@@ -2,21 +2,23 @@ import { BestSellerCarouselPropsType } from "@/types/bookTypes";
 import React from "react";
 import styles from "@/styles/components/mainComponent/bestBooks.module.scss";
 import Image from "next/image";
+import Link from "next/link";
 
 const BestCarouselItem = ({
-  newBooksData,
+  bestsellerData,
   isBestSellerSecondPage,
   bestSellerCarouselHandler,
 }: BestSellerCarouselPropsType) => {
   const bestsellerItems = isBestSellerSecondPage
-    ? newBooksData.slice(12)
-    : newBooksData.slice(0, 12);
+    ? bestsellerData.slice(12)
+    : bestsellerData.slice(0, 12);
 
   const bookItem = 12;
   const currentPage = isBestSellerSecondPage ? 2 : 1;
 
   return (
     <div className={styles["bestseller-wrapper"]}>
+      <Link href={"/bookList"}>베스트셀러</Link>
       <button onClick={bestSellerCarouselHandler}>이전</button>
       <div className={styles["bestseller-wrapper-box"]}>
         {bestsellerItems.map((item, idx) => {
@@ -38,7 +40,7 @@ const BestCarouselItem = ({
                 </div>
                 <div className={styles["item-author-box"]}>
                   <span className={styles["bestseller-item-author"]}>
-                    {item.author ? item.author : null}
+                    {item.author}
                   </span>
                   <span className={styles["bestseller-item-publisher"]}>
                     {item.publisher}

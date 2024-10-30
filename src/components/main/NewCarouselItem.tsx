@@ -2,6 +2,7 @@ import { NewBooksCarouselPropsType } from "@/types/bookTypes";
 import Image from "next/image";
 import React from "react";
 import styles from "@/styles/components/mainComponent/newBooks.module.scss";
+import Link from "next/link";
 
 const NewCarouselItem = ({
   newBooksData,
@@ -14,6 +15,7 @@ const NewCarouselItem = ({
 
   return (
     <div className={styles["new-books-wrapper"]}>
+      <Link href={"/bookList"}>새로나온 책</Link>
       <button onClick={newBooksCarouselHandler}>이전</button>
       <div className={styles["new-books-wrapper-box"]}>
         {newBooksItems.map(item => {

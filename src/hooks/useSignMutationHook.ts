@@ -1,11 +1,11 @@
 import { useQueryClient, useMutation } from "@tanstack/react-query";
-import { postLogin } from "@/api/signApi/loginApi";
+import { postLogin } from "@/api/query/loginApi";
 
 import {
   postSignUp,
   postVerifyPhone,
   postVerifyCode,
-} from "@/api/signApi/signUpApi";
+} from "@/api/query/signUpApi";
 
 //로그인, 회원가입, 핸드폰번호, 핸드폰번호 검증 후 코드를 받기 위한 mutation 훅
 export const useMutationHook = () => {

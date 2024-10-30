@@ -1,20 +1,11 @@
 "use client";
-import {
-  getBestsellers,
-  getNewBooks,
-  getRecommended,
-} from "@/api/query/main/carousel";
-import { QUERY_KEYS } from "@/api/queryKey/queryKeys";
+import { useCarouselsData } from "@/api/query/mainQuerys";
 import styles from "@/styles/pages/main.module.scss";
-import {
-  NewBooksCarouselType,
-  RecommendedCarouselType,
-} from "@/types/bookTypes";
-import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import BestCarouselItem from "./BestCarouselItem";
-import MainCarouselItem from "./RecommendedCarouselItem";
 import NewCarouselItem from "./NewCarouselItem";
+import MainCarouselItem from "./RecommendedCarouselItem";
+import { useRouter } from "next/navigation";
 
 const MainCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -22,25 +13,29 @@ const MainCarousel = () => {
   const [isBestSellerSecondPage, setIsBestSellerSecondPage] = useState(false);
   // const [selectedMenuIndex, setSelectedMenuIndex] = useState(0);
 
-  const { data: recommendedData } = useQuery<RecommendedCarouselType[]>({
-    queryKey: [QUERY_KEYS.mainRecommendedBooks],
-    queryFn: () => getRecommended(),
-  });
+  const {
+    recommendedData,
+    newBooksData,
+    bestsellerData,
+    isRecommendedLoading,
+    isNewBooksLoading,
+    isBestsellerLoading,
+    isRecommendedError,
+    isNewBooksError,
+    isBestsellerError,
+  } = useCarouselsData();
 
-  const { data: newBooksData } = useQuery<NewBooksCarouselType[]>({
-    queryKey: [QUERY_KEYS.mainNewBooks],
-    queryFn: () => getNewBooks(),
-  });
-  console.log("newBooksData", newBooksData);
+  if (isRecommendedLoading || isNewBooksLoading || isBestsellerLoading) {
+    return <div>로딩중 입니다</div>;
+  }
 
-  const { data: bestsellerData } = useQuery({
-    queryKey: [QUERY_KEYS.mainBestBooks],
-    queryFn: () => getBestsellers(),
-  });
+  if (isRecommendedError || isNewBooksError || isBestsellerError) {
+    console.error("에러 발생");
+    return;
+  }
 
-  // console.log("bestsellerData", bestsellerData);
-
-  if (!recommendedData || !newBooksData) {
+  if (!recommendedData || !newBooksData || !bestsellerData) {
+    console.log("데이터가 존재하지 않음");
     return;
   }
 
@@ -102,7 +97,7 @@ const MainCarousel = () => {
       />
 
       <BestCarouselItem
-        newBooksData={newBooksData}
+        bestsellerData={bestsellerData}
         isBestSellerSecondPage={isBestSellerSecondPage}
         bestSellerCarouselHandler={bestSellerCarouselHandler}
       />

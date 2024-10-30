@@ -3,6 +3,7 @@ import styles from "@/styles/components/mainComponent/recommendedBooks.module.sc
 import Image from "next/image";
 import { RecommendedCarouselPropsType } from "@/types/bookTypes";
 import { discountRateHandler } from "@/utils/common";
+import Link from "next/link";
 
 const RecommendedCarouselItem = ({
   recommendedData,
@@ -12,6 +13,7 @@ const RecommendedCarouselItem = ({
 }: RecommendedCarouselPropsType) => {
   return (
     <div>
+      <Link href={"/bookList"}>편집장 PICK</Link>
       <div className={styles["main-carousel-container"]}>
         <div className={styles["main-carousel-first"]}>
           <Image

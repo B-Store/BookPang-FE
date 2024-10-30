@@ -6,7 +6,7 @@ import githubLogo from "@/../public/assets/images/githubLogo.svg";
 
 const Footer = () => {
   return (
-    <div className={styles[""]}>
+    <div className={styles["footer"]}>
       <Image src={footer} alt="푸터 이미지" width={160} height={36} />
 
       <div>
