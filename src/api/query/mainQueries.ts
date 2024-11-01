@@ -10,7 +10,7 @@ import {
 } from "@/types/bookTypes";
 import { useQuery } from "@tanstack/react-query";
 
-export const MAIN_QUERY_KEYS = {
+const MAIN_QUERY_KEYS = {
   headerCategories: "header/categories",
   mainRecommendedBooks: "main/carousel/recommended",
   mainNewBooks: "main/carousel/newBooks",

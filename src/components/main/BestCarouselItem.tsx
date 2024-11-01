@@ -1,24 +1,27 @@
-import { BestSellerCarouselPropsType } from "@/types/bookTypes";
-import React from "react";
 import styles from "@/styles/components/mainComponent/bestBooks.module.scss";
+import { BestSellerCarouselPropsType } from "@/types/bookTypes";
 import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const BestCarouselItem = ({
   bestsellerData,
   isBestSellerSecondPage,
   bestSellerCarouselHandler,
 }: BestSellerCarouselPropsType) => {
+  // 캐러셀 페이지 나누기
   const bestsellerItems = isBestSellerSecondPage
     ? bestsellerData.slice(12)
     : bestsellerData.slice(0, 12);
 
+  // 도서 순위(임시)
   const bookItem = 12;
   const currentPage = isBestSellerSecondPage ? 2 : 1;
 
+  const router = useRouter();
+
   return (
     <div className={styles["bestseller-wrapper"]}>
-      <Link href={"/bookList"}>베스트셀러</Link>
+      <p onClick={() => router.push("/bookList?data=bestseller")}>베스트셀러</p>
       <button onClick={bestSellerCarouselHandler}>이전</button>
       <div className={styles["bestseller-wrapper-box"]}>
         {bestsellerItems.map((item, idx) => {

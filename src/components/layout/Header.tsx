@@ -12,7 +12,13 @@ const Header = () => {
   return (
     <div className={styles["header-wrap"]}>
       <div className={styles["header-wrap-top"]}>
-        <Image src={logo} alt="로고이미지" width={178} height={24} />
+        <Image
+          src={logo}
+          alt="로고이미지"
+          width={178}
+          height={24}
+          onClick={() => router.push("/")}
+        />
 
         <SearchForm />
 

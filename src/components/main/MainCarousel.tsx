@@ -1,11 +1,10 @@
 "use client";
-import { useCarouselsData } from "@/api/query/mainQuerys";
+import { useCarouselsData } from "@/api/query/mainQueries";
 import styles from "@/styles/pages/main.module.scss";
 import { useState } from "react";
 import BestCarouselItem from "./BestCarouselItem";
 import NewCarouselItem from "./NewCarouselItem";
 import MainCarouselItem from "./RecommendedCarouselItem";
-import { useRouter } from "next/navigation";
 
 const MainCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);

@@ -61,14 +61,6 @@ export type BestSellerCarouselPropsType = {
   bestSellerCarouselHandler: () => void;
 };
 
-export type BookListType = {
-  id: number;
-  title: string;
-  author: string;
-  publisher: string;
-  cover: string;
-};
-
 export type CartBookListType = {
   title: string;
   link: string;
@@ -79,3 +71,5 @@ export type CartBookListType = {
   cover: string;
   categoryName: string;
 };
+
+export type BookApiKey = "recommendedBook" | "newBook" | "bestseller";

@@ -1,4 +1,4 @@
-import { useCategoryData } from "@/api/query/commonQuerys";
+import { useCategoryData } from "@/api/query/commonQueries";
 import styles from "@/styles/components/toggleMenu/toggleMenu.module.scss";
 import { useRouter } from "next/navigation";
 import { useState } from "react";

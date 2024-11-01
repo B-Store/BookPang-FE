@@ -1,9 +1,8 @@
-import React from "react";
 import styles from "@/styles/components/mainComponent/recommendedBooks.module.scss";
-import Image from "next/image";
 import { RecommendedCarouselPropsType } from "@/types/bookTypes";
 import { discountRateHandler } from "@/utils/common";
-import Link from "next/link";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const RecommendedCarouselItem = ({
   recommendedData,
@@ -11,9 +10,13 @@ const RecommendedCarouselItem = ({
   nextRecommendedHandler,
   prevRecommendedHandler,
 }: RecommendedCarouselPropsType) => {
+  const router = useRouter();
+
   return (
     <div>
-      <Link href={"/bookList"}>편집장 PICK</Link>
+      <p onClick={() => router.push("/bookList?data=recommendedBook")}>
+        편집장 PICK
+      </p>
       <div className={styles["main-carousel-container"]}>
         <div className={styles["main-carousel-first"]}>
           <Image

@@ -3,6 +3,7 @@ import Image from "next/image";
 import React from "react";
 import styles from "@/styles/components/mainComponent/newBooks.module.scss";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const NewCarouselItem = ({
   newBooksData,
@@ -13,9 +14,11 @@ const NewCarouselItem = ({
     ? newBooksData.slice(10)
     : newBooksData.slice(0, 10);
 
+  const router = useRouter();
+
   return (
     <div className={styles["new-books-wrapper"]}>
-      <Link href={"/bookList"}>새로나온 책</Link>
+      <p onClick={() => router.push("/bookList?data=newBook")}>새로나온 책</p>
       <button onClick={newBooksCarouselHandler}>이전</button>
       <div className={styles["new-books-wrapper-box"]}>
         {newBooksItems.map(item => {

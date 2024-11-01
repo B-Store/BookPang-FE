@@ -2,7 +2,7 @@ import { CategoryTyPe } from "@/types/commonTypes";
 import { useQuery } from "@tanstack/react-query";
 import { getCategories } from "../dataApi/commonApi";
 
-export const API_QUERY_KEYS = {
+const API_QUERY_KEYS = {
   headerCategories: "header/categories",
   mainRecommendedBooks: "main/carousel/recommended",
   mainNewBooks: "main/carousel/newBooks",
