@@ -3,11 +3,6 @@ import type { SignUserType } from "@/types/signTypes";
 import { AxiosResponse } from "axios";
 import { ResMessage } from "@/types/resType";
 
-export type CategoryTyPe = {
-  id: number;
-  depth1: string;
-};
-
 interface SignFormType {
   signFn: (data: any) => any;
   confirmPassword?: string;

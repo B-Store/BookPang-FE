@@ -1,12 +1,10 @@
-import { CategoryTyPe } from "@/types/commonTypes";
 import { useQuery } from "@tanstack/react-query";
-import { getCategories } from "../dataApi/commonApi";
+import { getCategories, getNewSpecialBooks } from "../dataApi/commonApi";
+import { CategoryTyPes, NewSpecialBookTypes } from "@/types/bookTypes";
 
 const API_QUERY_KEYS = {
-  headerCategories: "header/categories",
-  mainRecommendedBooks: "main/carousel/recommended",
-  mainNewBooks: "main/carousel/newBooks",
-  mainBestBooks: "main/carousel/bestBooks",
+  categories: "header/toggleMenu",
+  categoryNewSpecialBooks: "header/toggleMenu/newSpecialBooks",
 };
 
 export const useCategoryData = (selectedCategory: string) => {
@@ -14,14 +12,26 @@ export const useCategoryData = (selectedCategory: string) => {
     data: categoryData,
     isLoading: isCategoryLoading,
     isError: isCategoryError,
-  } = useQuery<CategoryTyPe[]>({
-    queryKey: [API_QUERY_KEYS.headerCategories, selectedCategory],
+  } = useQuery<CategoryTyPes[]>({
+    queryKey: [API_QUERY_KEYS.categories, selectedCategory],
     queryFn: () => getCategories(selectedCategory),
+  });
+
+  const {
+    data: newSpecialData,
+    isLoading: isNewSpecialLoading,
+    isError: isNewSpecialError,
+  } = useQuery<NewSpecialBookTypes[]>({
+    queryKey: [API_QUERY_KEYS.categoryNewSpecialBooks],
+    queryFn: () => getNewSpecialBooks(),
   });
 
   return {
     categoryData,
+    newSpecialData,
     isCategoryLoading,
+    isNewSpecialLoading,
     isCategoryError,
+    isNewSpecialError,
   };
 };

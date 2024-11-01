@@ -1,13 +1,13 @@
 import styles from "@/styles/components/mainComponent/bestBooks.module.scss";
-import { BestSellerCarouselPropsType } from "@/types/bookTypes";
+import { BestSellerCarouselPropsTypes } from "@/types/bookTypes";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-const BestCarouselItem = ({
+const BestBookCarouselItem = ({
   bestsellerData,
   isBestSellerSecondPage,
   bestSellerCarouselHandler,
-}: BestSellerCarouselPropsType) => {
+}: BestSellerCarouselPropsTypes) => {
   // 캐러셀 페이지 나누기
   const bestsellerItems = isBestSellerSecondPage
     ? bestsellerData.slice(12)
@@ -59,4 +59,4 @@ const BestCarouselItem = ({
   );
 };
 
-export default BestCarouselItem;
+export default BestBookCarouselItem;

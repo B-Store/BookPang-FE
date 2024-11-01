@@ -2,7 +2,7 @@ import mainMenuButton from "@/../public/assets/icons/mainMenuButton.svg";
 import styles from "@/styles/components/layout/navBar.module.scss";
 import Image from "next/image";
 import { useState } from "react";
-import ToggleMenu from "../common/ToggleMenu";
+import ToggleMenu from "../ToggleMenu";
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

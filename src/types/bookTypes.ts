@@ -1,4 +1,9 @@
-export type RecommendedCarouselType = {
+export type CategoryTyPes = {
+  id: number;
+  depth1: string;
+};
+
+export type RecommendedBookCarouselTypes = {
   author: string;
   cover: string;
   description: string;
@@ -10,7 +15,7 @@ export type RecommendedCarouselType = {
   title: string;
 };
 
-export type NewBooksCarouselType = {
+export type NewBookCarouselTypes = {
   author: string;
   cover: string;
   createdAt: string;
@@ -19,7 +24,7 @@ export type NewBooksCarouselType = {
   title: string;
 };
 
-export type BestSellerCarouselType = {
+export type BestSellerCarouselTypes = {
   author: string;
   averageRating: null;
   cover: string;
@@ -42,26 +47,31 @@ export type BestSellerCarouselType = {
   updatedAt: string;
 };
 
-export type RecommendedCarouselPropsType = {
-  recommendedData: RecommendedCarouselType[];
+export type RecommendedCarouselPropsTypes = {
+  recommendedData: RecommendedBookCarouselTypes[];
   currentIndex: number;
   nextRecommendedHandler: () => void;
   prevRecommendedHandler: () => void;
 };
 
-export type NewBooksCarouselPropsType = {
-  newBooksData: NewBooksCarouselType[];
+export type NewBookCarouselPropsTypes = {
+  newBooksData: NewBookCarouselTypes[];
   isNewBookSecondPage: boolean;
   newBooksCarouselHandler: () => void;
 };
 
-export type BestSellerCarouselPropsType = {
-  bestsellerData: BestSellerCarouselType[];
+export type BestSellerCarouselPropsTypes = {
+  bestsellerData: BestSellerCarouselTypes[];
   isBestSellerSecondPage: boolean;
   bestSellerCarouselHandler: () => void;
 };
 
-export type CartBookListType = {
+export type NewSpecialBookTypes = {
+  cover: string;
+  id: number;
+};
+
+export type CartBookListTypes = {
   title: string;
   link: string;
   author: string;
