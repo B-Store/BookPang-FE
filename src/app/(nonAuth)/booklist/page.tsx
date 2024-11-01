@@ -1,38 +1,33 @@
-import { useCarouselsData } from "@/api/query/mainQuerys";
-import { koreaBookList } from "@/utils/temp/bookList";
+"use client";
+
+import { useBookListData } from "@/api/query/bookListQueries";
+import { BookApiKey } from "@/types/bookTypes";
 import Image from "next/image";
-import React from "react";
+import { useSearchParams } from "next/navigation";
 
 const BookListPage = () => {
-  const {
-    recommendedData,
-    newBooksData,
-    bestsellerData,
-    isRecommendedLoading,
-    isNewBooksLoading,
-    isBestsellerLoading,
-    isRecommendedError,
-    isNewBooksError,
-    isBestsellerError,
-  } = useCarouselsData();
+  const searchParams = useSearchParams();
+  const key = searchParams.get("data");
 
-  if (isRecommendedLoading || isNewBooksLoading || isBestsellerLoading) {
+  const { data, isLoading, isError } = useBookListData(key as BookApiKey);
+
+  if (isLoading) {
     return <div>로딩중 입니다</div>;
   }
 
-  if (isRecommendedError || isNewBooksError || isBestsellerError) {
+  if (isError) {
     console.error("에러 발생");
     return;
   }
 
-  if (!recommendedData || !newBooksData || !bestsellerData) {
+  if (!data) {
     console.log("데이터가 존재하지 않음");
     return;
   }
 
   return (
     <div>
-      {koreaBookList.map(item => {
+      {data?.map((item: any) => {
         return (
           <div key={item.id}>
             <Image src={item.cover} alt="도서 커버" width={124} height={181} />
@@ -42,7 +37,6 @@ const BookListPage = () => {
           </div>
         );
       })}
-      ss
     </div>
   );
 };
