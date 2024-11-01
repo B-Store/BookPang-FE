@@ -1,15 +1,13 @@
-import { NewBooksCarouselPropsType } from "@/types/bookTypes";
-import Image from "next/image";
-import React from "react";
 import styles from "@/styles/components/mainComponent/newBooks.module.scss";
-import Link from "next/link";
+import { NewBookCarouselPropsTypes } from "@/types/bookTypes";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-const NewCarouselItem = ({
+const NewBookCarouselItem = ({
   newBooksData,
   isNewBookSecondPage,
   newBooksCarouselHandler,
-}: NewBooksCarouselPropsType) => {
+}: NewBookCarouselPropsTypes) => {
   const newBooksItems = isNewBookSecondPage
     ? newBooksData.slice(10)
     : newBooksData.slice(0, 10);
@@ -46,4 +44,4 @@ const NewCarouselItem = ({
   );
 };
 
-export default NewCarouselItem;
+export default NewBookCarouselItem;

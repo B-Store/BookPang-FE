@@ -1,15 +1,15 @@
 import styles from "@/styles/components/mainComponent/recommendedBooks.module.scss";
-import { RecommendedCarouselPropsType } from "@/types/bookTypes";
+import { RecommendedCarouselPropsTypes } from "@/types/bookTypes";
 import { discountRateHandler } from "@/utils/common";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-const RecommendedCarouselItem = ({
+const RecommendedBookCarouselItem = ({
   recommendedData,
   currentIndex,
   nextRecommendedHandler,
   prevRecommendedHandler,
-}: RecommendedCarouselPropsType) => {
+}: RecommendedCarouselPropsTypes) => {
   const router = useRouter();
 
   return (
@@ -92,4 +92,4 @@ const RecommendedCarouselItem = ({
   );
 };
 
-export default RecommendedCarouselItem;
+export default RecommendedBookCarouselItem;

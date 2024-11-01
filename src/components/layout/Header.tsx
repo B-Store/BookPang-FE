@@ -3,7 +3,7 @@ import logo from "@/../public/assets/images/logo.svg";
 import styles from "@/styles/components/layout/header.module.scss";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import SearchForm from "../common/SearchForm";
+import SearchForm from "../SearchForm";
 import NavBar from "./NavBar";
 
 const Header = () => {

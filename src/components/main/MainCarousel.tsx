@@ -2,9 +2,9 @@
 import { useCarouselsData } from "@/api/query/mainQueries";
 import styles from "@/styles/pages/main.module.scss";
 import { useState } from "react";
-import BestCarouselItem from "./BestCarouselItem";
-import NewCarouselItem from "./NewCarouselItem";
-import MainCarouselItem from "./RecommendedCarouselItem";
+import BestBookCarouselItem from "./BestBookCarouselItem";
+import NewBookCarouselItem from "./NewBookCarouselItem";
+import RecommendedBookCarouselItem from "./RecommendedBookCarouselItem";
 
 const MainCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -82,20 +82,20 @@ const MainCarousel = () => {
         </ul>
         <span>더보기 +</span>
       </div> */}
-      <MainCarouselItem
+      <RecommendedBookCarouselItem
         recommendedData={recommendedData}
         currentIndex={currentIndex}
         nextRecommendedHandler={nextRecommendedHandler}
         prevRecommendedHandler={prevRecommendedHandler}
       />
 
-      <NewCarouselItem
+      <NewBookCarouselItem
         newBooksData={newBooksData}
         isNewBookSecondPage={isNewBookSecondPage}
         newBooksCarouselHandler={newBooksCarouselHandler}
       />
 
-      <BestCarouselItem
+      <BestBookCarouselItem
         bestsellerData={bestsellerData}
         isBestSellerSecondPage={isBestSellerSecondPage}
         bestSellerCarouselHandler={bestSellerCarouselHandler}
