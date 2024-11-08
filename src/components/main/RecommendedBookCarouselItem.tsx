@@ -1,5 +1,5 @@
-import styles from "@/styles/components/mainComponent/recommendedBooks.module.scss";
-import { RecommendedCarouselPropsTypes } from "@/types/bookTypes";
+import styles from "@/styles/components/carousel/recommendedBooks.module.scss";
+import { RecommendedCarouselPropsTypes } from "@/types/carouselTypes";
 import { discountRateHandler } from "@/utils/common";
 import Image from "next/image";
 import { useRouter } from "next/navigation";

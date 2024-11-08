@@ -1,5 +1,5 @@
 "use client";
-import { useCarouselsData } from "@/api/query/mainQueries";
+import { useCarouselsData } from "@/api/query/carouselQueries";
 import styles from "@/styles/pages/main.module.scss";
 import { useState } from "react";
 import BestBookCarouselItem from "./BestBookCarouselItem";

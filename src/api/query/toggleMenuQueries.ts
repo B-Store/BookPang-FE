@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { getCategories, getNewSpecialBooks } from "../dataApi/commonApi";
-import { CategoryTyPes, NewSpecialBookTypes } from "@/types/bookTypes";
+import { getCategories, getNewSpecialBooks } from "../dataApi/toggleMenuApi";
+import { CategoryTyPes, NewSpecialBookTypes } from "@/types/toggleMenuTypes";
 
-const API_QUERY_KEYS = {
-  categories: "header/toggleMenu",
-  categoryNewSpecialBooks: "header/toggleMenu/newSpecialBooks",
+const TOGGLE_MENU_QUERY_KEYS = {
+  categories: "nav/toggleMenu",
+  categoryNewSpecialBooks: "nav/toggleMenu/newSpecialBooks",
 };
 
 export const useCategoryData = (selectedCategory: string) => {
@@ -13,7 +13,7 @@ export const useCategoryData = (selectedCategory: string) => {
     isLoading: isCategoryLoading,
     isError: isCategoryError,
   } = useQuery<CategoryTyPes[]>({
-    queryKey: [API_QUERY_KEYS.categories, selectedCategory],
+    queryKey: [TOGGLE_MENU_QUERY_KEYS.categories, selectedCategory],
     queryFn: () => getCategories(selectedCategory),
   });
 
@@ -22,7 +22,7 @@ export const useCategoryData = (selectedCategory: string) => {
     isLoading: isNewSpecialLoading,
     isError: isNewSpecialError,
   } = useQuery<NewSpecialBookTypes[]>({
-    queryKey: [API_QUERY_KEYS.categoryNewSpecialBooks],
+    queryKey: [TOGGLE_MENU_QUERY_KEYS.categoryNewSpecialBooks],
     queryFn: () => getNewSpecialBooks(),
   });
 

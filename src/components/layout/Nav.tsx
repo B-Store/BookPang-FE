@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import ToggleMenu from "../ToggleMenu";
 
-const NavBar = () => {
+const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedMenuIndex, setSelectedMenuIndex] = useState(0);
 
@@ -42,4 +42,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default Nav;

@@ -1,4 +1,4 @@
-import { useCategoryData } from "@/api/query/commonQueries";
+import { useCategoryData } from "@/api/query/toggleMenuQueries";
 import styles from "@/styles/components/toggleMenu/toggleMenu.module.scss";
 import Image from "next/image";
 import { useRouter } from "next/navigation";

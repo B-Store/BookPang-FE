@@ -52,3 +52,12 @@
     cursor: pointer;
   }
 }
+
+.search-box {
+  width: 15%;
+  background-color: aliceblue;
+  z-index: 2;
+  position: absolute;
+  top: 4rem;
+  left: 50rem;
+}

@@ -1,13 +1,13 @@
 import {
   getBestsellers,
   getNewBooks,
-  getRecommended,
-} from "@/api/dataApi/mainPageApi";
+  getRecommendedBooks,
+} from "@/api/dataApi/carouselApi";
 import {
   BestSellerCarouselTypes,
   NewBookCarouselTypes,
   RecommendedBookCarouselTypes,
-} from "@/types/bookTypes";
+} from "@/types/carouselTypes";
 import { useQuery } from "@tanstack/react-query";
 
 const MAIN_QUERY_KEYS = {
@@ -23,7 +23,7 @@ export const useCarouselsData = () => {
     isError: isRecommendedError,
   } = useQuery<RecommendedBookCarouselTypes[]>({
     queryKey: [MAIN_QUERY_KEYS.recommendedBookCarousel],
-    queryFn: () => getRecommended(),
+    queryFn: () => getRecommendedBooks(),
   });
 
   const {

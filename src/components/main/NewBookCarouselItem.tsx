@@ -1,5 +1,5 @@
-import styles from "@/styles/components/mainComponent/newBooks.module.scss";
-import { NewBookCarouselPropsTypes } from "@/types/bookTypes";
+import styles from "@/styles/components/carousel/newBooks.module.scss";
+import { NewBookCarouselPropsTypes } from "@/types/carouselTypes";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
