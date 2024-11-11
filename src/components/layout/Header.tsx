@@ -15,7 +15,7 @@ const Header = () => {
         <Image
           src={logo}
           alt="로고이미지"
-          width={178}
+          width={171}
           height={24}
           onClick={() => router.push("/")}
         />

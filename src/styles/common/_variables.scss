@@ -28,7 +28,7 @@ $font-weights: (
 );
 
 // pc 폰트
-$pc-korean-font: (
+$pc-font: (
   title-1: (
     font-size: 2rem,
     line-height: 2.625rem,
@@ -92,7 +92,7 @@ $pc-korean-font: (
 );
 
 // 모바일 폰트
-$mobile-korean-font: (
+$mobile-font: (
   title-1: (
     font-size: 1.5rem,
     line-height: 2.125rem,
@@ -221,17 +221,14 @@ $color-palette: (
 // 폰트 믹스인
 @mixin font-styles(
   $font-map,
-  $style-key,
+  $font-key,
   $font-weight: font-medium,
-  $letter-spacing: null
+  $letter-spacing: $letter-spacing
 ) {
-  font-size: map-get(map-get($font-map, $style-key), font-size);
-  line-height: map-get(map-get($font-map, $style-key), line-height);
+  font-size: map-get(map-get($font-map, $font-key), font-size);
+  line-height: map-get(map-get($font-map, $font-key), line-height);
   font-weight: map-get($font-weights, $font-weight);
-
-  @if $letter-spacing {
-    letter-spacing: $letter-spacing;
-  }
+  letter-spacing: $letter-spacing;
 }
 
 // 컬러팔레트 믹스인

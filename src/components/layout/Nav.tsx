@@ -6,9 +6,8 @@ import ToggleMenu from "../ToggleMenu";
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [selectedMenuIndex, setSelectedMenuIndex] = useState(0);
 
-  const navMenu = ["메인", "베스트셀러", "새로나온 책", "나의 서재", "북팡톡"];
+  const navMenu = ["편집장 PICK", "새로나온 책", "베스트셀러", "북팡톡"];
 
   return (
     <div className={styles["nav-wrap"]}>
@@ -27,15 +26,7 @@ const Nav = () => {
       </div>
       <ul className={styles["nav-buttons"]}>
         {navMenu.map((item, idx) => {
-          return (
-            <li
-              key={idx}
-              onClick={() => setSelectedMenuIndex(idx)}
-              className={selectedMenuIndex === idx ? styles["active"] : ""}
-            >
-              {item}
-            </li>
-          );
+          return <li key={idx}>{item}</li>;
         })}
       </ul>
     </div>

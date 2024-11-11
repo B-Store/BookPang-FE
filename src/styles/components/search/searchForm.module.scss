@@ -1,10 +1,10 @@
 @import "./../../common/variables";
 
 .search-form {
-  width: 32.25rem;
-  height: 3rem;
+  width: 496px;
+  height: 48px;
   padding: 0.875rem;
-  border: 1px solid color-styles(line-regular-color);
+  border: 1px solid get-color(line-regular-color);
   border-radius: 100px;
   display: flex;
   align-items: center;
@@ -12,52 +12,98 @@
   justify-content: center;
   gap: 0.75rem;
 
-  .search-select {
-    width: 4.25rem;
-    height: 2.625rem;
+  &-select {
+    width: 72px;
+    height: 20px;
     border: none;
     text-align: center;
 
-    &-options {
-      @include font-styles(
-        $font-map: $pc-korean-font,
-        $style-key: button-2,
-        $font-weight: font-medium,
-        $letter-spacing: $letter-spacing
-      );
-      color: color-styles(font-02-black);
-    }
+    @include font-styles($font-map: $pc-font, $font-key: button-2);
+    color: get-color(font-02-black);
   }
 
-  .search-input {
-    width: 21.75rem;
+  &-input {
+    width: 324px;
+    height: 20px;
     border: none;
+    position: relative;
+
     @include font-styles(
-      $font-map: $pc-korean-font,
-      $style-key: body-3,
-      $font-weight: font-regular,
-      $letter-spacing: $letter-spacing
+      $font-map: $pc-font,
+      $font-key: body-3,
+      $font-weight: font-regular
     );
     color: color-styles(font-04-gray);
   }
 
-  .search-select:focus,
-  .search-input:focus {
+  &-select:focus,
+  &-input:focus {
     outline: none;
   }
 
-  .search-btn {
+  .search-result-list {
+    width: 867px;
+    height: 568px;
+    z-index: 2;
+    position: absolute;
+    top: 82px;
+    border: 1px solid get-color(line-black-color);
+    background-color: get-color(bg-white-color);
+    border-radius: 20px;
+    padding: 36px 0 20px 0;
+
+    &-ul {
+      padding: 0 20px;
+      display: flex;
+      gap: 12px;
+
+      .search-data {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 8px;
+
+        &-title {
+          @include font-styles(
+            $font-map: $pc-font,
+            $font-key: body-3,
+            $font-weight: font-bold
+          );
+          color: get-color(font-02-black);
+
+          .highlight {
+            color: get-color(brand-sub-color-1);
+          }
+        }
+
+        &-author {
+          @include font-styles($font-map: $pc-font, $font-key: body-4);
+          color: get-color(font-03-gray);
+        }
+      }
+    }
+
+    .result-line {
+      border-top: 1px solid get-color(line-regular-color);
+      position: relative;
+
+      &-txt {
+        position: absolute;
+        top: 8px;
+        right: 36px;
+        @include font-styles(
+          $font-map: $pc-font,
+          $font-key: button-1,
+          $font-weight: font-bold
+        );
+        color: get-color(font-03-gray);
+      }
+    }
+  }
+
+  &-btn {
     background: none;
     border: none;
     cursor: pointer;
   }
-}
-
-.search-box {
-  width: 15%;
-  background-color: aliceblue;
-  z-index: 2;
-  position: absolute;
-  top: 4rem;
-  left: 50rem;
 }
