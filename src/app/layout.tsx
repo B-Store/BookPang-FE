@@ -18,12 +18,12 @@ export default function RootLayout({
     <html lang="ko">
       <body>
         <QueryProvider>
-          <div className="layout-wrapper">
-            <header className="header">
+          <div className="layout-wrap">
+            <header className="layout-wrap-header">
               <Header />
             </header>
-            <main className="main-contents">{children}</main>
-            <footer className="footer">
+            <main>{children}</main>
+            <footer className="layout-wrap-footer">
               <Footer />
             </footer>
           </div>

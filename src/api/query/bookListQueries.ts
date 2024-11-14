@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { getBookList } from "../dataApi/bookListPageApi";
-import { BookApiKey } from "@/types/bookTypes";
+import { BookApiKey } from "@/types/carouselTypes";
 
 const BOOK_LIST_QUERY_KEYS = {
   bookList: "bookList",

@@ -25,10 +25,9 @@
 
       .first-info-title {
         @include font-styles(
-          $font-map: $pc-korean-font,
-          $style-key: title-3,
-          $font-weight: font-bold,
-          $letter-spacing: $letter-spacing
+          $font-map: $pc-font,
+          $font-key: title-3,
+          $font-weight: font-bold
         );
         color: color-styles(system-blue-300);
       }

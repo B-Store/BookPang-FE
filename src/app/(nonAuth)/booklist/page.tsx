@@ -1,7 +1,7 @@
 "use client";
 
+import { BookApiKey } from "@/api/dataApi/bookListPageApi";
 import { useBookListData } from "@/api/query/bookListQueries";
-import { BookApiKey } from "@/types/bookTypes";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 

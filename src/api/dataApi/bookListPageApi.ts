@@ -1,5 +1,6 @@
 import axi from "@/lib/axiosInterceptors";
-import { BookApiKey } from "@/types/bookTypes";
+
+export type BookApiKey = "recommendedBook" | "newBook" | "bestseller";
 
 const bookApiEndpoints = {
   recommendedBook:

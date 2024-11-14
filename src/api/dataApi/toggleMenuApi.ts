@@ -2,7 +2,7 @@ import axi from "@/lib/axiosInterceptors";
 
 export const getCategories = async (param: string) => {
   try {
-    const response = await axi.get(`/books-main/categories?category=${param}`);
+    const response = await axi.get(`/book-list/categories?category=${param}`);
     return response.data;
   } catch (error) {
     console.log("error", error);
@@ -11,7 +11,7 @@ export const getCategories = async (param: string) => {
 
 export const getNewSpecialBooks = async () => {
   try {
-    const response = await axi.get("/books-main/ItemNewSpecial?limit=3");
+    const response = await axi.get("/book-list/ItemNewSpecial?limit=3");
 
     return response.data;
   } catch (error) {

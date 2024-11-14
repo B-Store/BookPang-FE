@@ -4,7 +4,7 @@ import styles from "@/styles/components/layout/header.module.scss";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import SearchForm from "../SearchForm";
-import NavBar from "./NavBar";
+import Nav from "./Nav";
 
 const Header = () => {
   const router = useRouter();
@@ -15,7 +15,7 @@ const Header = () => {
         <Image
           src={logo}
           alt="로고이미지"
-          width={178}
+          width={171}
           height={24}
           onClick={() => router.push("/")}
         />
@@ -28,7 +28,7 @@ const Header = () => {
           <span>고객센터</span>
         </div>
       </div>
-      <NavBar />
+      <Nav />
     </div>
   );
 };

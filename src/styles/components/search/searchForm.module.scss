@@ -1,0 +1,110 @@
+@import "./../../common/variables";
+
+.search-form {
+  width: 496px;
+  height: 48px;
+  padding: 0.875rem;
+  border: 1px solid get-color(line-regular-color);
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  gap: 0.75rem;
+
+  &-select {
+    width: 72px;
+    height: 20px;
+    border: none;
+    text-align: center;
+
+    @include font-styles($font-map: $pc-font, $font-key: button-2);
+    color: get-color(font-02-black);
+  }
+
+  &-input {
+    width: 324px;
+    height: 20px;
+    border: none;
+    position: relative;
+
+    @include font-styles(
+      $font-map: $pc-font,
+      $font-key: body-3,
+      $font-weight: font-regular
+    );
+    color: color-styles(font-04-gray);
+  }
+
+  &-select:focus,
+  &-input:focus {
+    outline: none;
+  }
+
+  .search-result-list {
+    width: 867px;
+    height: 568px;
+    z-index: 2;
+    position: absolute;
+    top: 82px;
+    border: 1px solid get-color(line-black-color);
+    background-color: get-color(bg-white-color);
+    border-radius: 20px;
+    padding: 36px 0 20px 0;
+
+    &-ul {
+      padding: 0 20px;
+      display: flex;
+      gap: 12px;
+
+      .search-data {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 8px;
+
+        &-title {
+          @include font-styles(
+            $font-map: $pc-font,
+            $font-key: body-3,
+            $font-weight: font-bold
+          );
+          color: get-color(font-02-black);
+
+          .highlight {
+            color: get-color(brand-sub-color-1);
+          }
+        }
+
+        &-author {
+          @include font-styles($font-map: $pc-font, $font-key: body-4);
+          color: get-color(font-03-gray);
+        }
+      }
+    }
+
+    .result-line {
+      border-top: 1px solid get-color(line-regular-color);
+      position: relative;
+
+      &-txt {
+        cursor: pointer;
+        position: absolute;
+        top: 8px;
+        right: 36px;
+        @include font-styles(
+          $font-map: $pc-font,
+          $font-key: button-1,
+          $font-weight: font-bold
+        );
+        color: get-color(font-03-gray);
+      }
+    }
+  }
+
+  &-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+}

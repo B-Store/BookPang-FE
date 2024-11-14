@@ -1,5 +1,5 @@
-import styles from "@/styles/components/mainComponent/bestBooks.module.scss";
-import { BestSellerCarouselPropsTypes } from "@/types/bookTypes";
+import styles from "@/styles/components/carousel/bestBooks.module.scss";
+import { BestSellerCarouselPropsTypes } from "@/types/carouselTypes";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 

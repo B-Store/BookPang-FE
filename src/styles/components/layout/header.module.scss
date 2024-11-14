@@ -1,32 +1,25 @@
 @import "./../../common/variables";
 
 .header-wrap {
-  width: 100%;
-  padding: 1.125rem 1.25rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
 
   &-top {
+    height: 100px;
+    padding: 1.625rem 1.25rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 
     &-links {
-      width: 7.25rem;
-      height: 1.25rem;
       cursor: pointer;
       display: flex;
-      gap: 16px;
+      gap: 1rem;
 
-      @include font-styles(
-        $font-map: $pc-korean-font,
-        $style-key: body-3,
-        $font-weight: font-medium,
-        $letter-spacing: $letter-spacing
-      );
-      color: color-styles(font-03-gray);
+      @include font-styles($font-map: $pc-font, $font-key: body-3);
+      color: get-color(font-03-gray);
     }
   }
 }
