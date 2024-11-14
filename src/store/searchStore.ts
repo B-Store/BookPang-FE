@@ -7,5 +7,6 @@ type SearchKeywordType = {
 
 export const useSearchKeywordStore = create<SearchKeywordType>(set => ({
   keyword: "",
+  isSearch: false,
   searched: (keyword: string) => set({ keyword }),
 }));

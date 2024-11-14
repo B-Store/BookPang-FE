@@ -2,21 +2,24 @@ import magnifier from "@/../public/assets/icons/magnifier.svg";
 import searchBarLine from "@/../public/assets/icons/searchBarLine.svg";
 import { useSearchData } from "@/api/query/searchQuery";
 import { useDebounce } from "@/hooks/useDebounce";
+import { useSearchKeywordStore } from "@/store/searchStore";
 import styles from "@/styles/components/search/searchForm.module.scss";
 import { searchData } from "@/utils/temp/searchData";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
 const SearchBar = () => {
-  const { register, watch, handleSubmit } = useForm();
+  const searched = useSearchKeywordStore(state => state.searched);
 
+  const { register, watch, reset, handleSubmit } = useForm();
   const searchKeyword = watch("searchKeyword");
-
   const debouncedKeyword = useDebounce(searchKeyword, 300);
+
+  const router = useRouter();
 
   // const { data, isLoading, isError } = useSearchData(debouncedKeyword);
 
-  console.log("debouncedKeyword", debouncedKeyword);
   // useEffect(() => {
   //   console.log("Debounced keyword:", debouncedKeyword); // 디바운싱이 적용된 키워드 확인
   // }, [debouncedKeyword]);
@@ -29,6 +32,8 @@ const SearchBar = () => {
 
   const searchSubmitHandler = (data: any) => {
     console.log("검색!!!!!!!", data);
+    searched(data);
+    router.push("/searchList");
   };
 
   const highlightKeyword = (title: string, keyword: string) => {
@@ -91,7 +96,9 @@ const SearchBar = () => {
             );
           })}
           <div className={styles["result-line"]}>
-            <p className={styles["result-line-txt"]}>닫기</p>
+            <p onClick={() => reset()} className={styles["result-line-txt"]}>
+              닫기
+            </p>
           </div>
         </div>
       )}

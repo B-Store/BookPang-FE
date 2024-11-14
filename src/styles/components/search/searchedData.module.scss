@@ -1,0 +1,15 @@
+.searched-data-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .all-check-input {
+    display: none;
+  }
+
+  .searched-data {
+    display: flex;
+    align-content: space-between;
+    gap: 50px;
+  }
+}
