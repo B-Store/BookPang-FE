@@ -1,5 +1,3 @@
-"use client";
-
 import ImageSlide from "@/components/main/ImageSlide";
 import MainCarousel from "@/components/main/MainCarousel";
 import styles from "@/styles/pages/main.module.scss";

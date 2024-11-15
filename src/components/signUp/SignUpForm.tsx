@@ -2,18 +2,17 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import SignInput from "@/components/sign/SignInput";
+import SignUpInput from "@/components/signUp/SignUpInput";
 import Button from "@/components/common/Button";
-
 import { useMutationHook } from "@/hooks/useSignMutationHook";
 import { schema } from "@/lib/userSchema";
 import { useSignUser } from "@/store/signUpStore";
 import { getCheckLoginId } from "@/api/dataApi/signUpApi";
-
 import type { SignFormType, SignFormPropsType } from "@/types/commonTypes";
 import type { SignUserType } from "@/types/signTypes";
+import SignUpConsent from "./SignUpConsent";
 
-const SignForm = ({ signFn, selectLabel, ...props }: SignFormType) => {
+const SignUpForm = ({ signFn, selectLabel, ...props }: SignFormType) => {
   const [passwordType, setPasswordType] = useState("password");
   const [confirmPasswordType, setConfirmPasswordType] = useState("password");
   const { verifyPhone, verifyCode } = useMutationHook();
@@ -59,7 +58,7 @@ const SignForm = ({ signFn, selectLabel, ...props }: SignFormType) => {
     <>
       <form className="pang-form" onSubmit={handleSubmit(signFn)}>
         <h1 className="title">{selectLabel}</h1>
-        <SignInput
+        <SignUpInput
           register={register}
           id="id"
           getRedFunc={() => idCheckFn(id)}
@@ -68,7 +67,7 @@ const SignForm = ({ signFn, selectLabel, ...props }: SignFormType) => {
           errors={errors.id}
         />
 
-        <SignInput
+        <SignUpInput
           register={register}
           type={passwordType}
           password="password"
@@ -79,7 +78,7 @@ const SignForm = ({ signFn, selectLabel, ...props }: SignFormType) => {
 
         {confirmPassword && (
           <>
-            <SignInput
+            <SignUpInput
               register={register}
               type={confirmPasswordType}
               confirmPassword={confirmPassword}
@@ -88,14 +87,14 @@ const SignForm = ({ signFn, selectLabel, ...props }: SignFormType) => {
               errors={errors.confirmPassword}
             />
 
-            <SignInput
+            <SignUpInput
               register={register}
               type="text"
               nickName="nickName"
               placeholder="닉네임 입력"
               errors={errors.nickName}
             />
-            <SignInput
+            <SignUpInput
               register={register}
               type="text"
               getFunc={
@@ -115,4 +114,4 @@ const SignForm = ({ signFn, selectLabel, ...props }: SignFormType) => {
   );
 };
 
-export default SignForm;
+export default SignUpForm;

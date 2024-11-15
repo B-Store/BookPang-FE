@@ -1,0 +1,15 @@
+.consent-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+
+  .consent-txt-wrap {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      cursor: pointer;
+    }
+  }
+}

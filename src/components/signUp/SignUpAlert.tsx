@@ -1,6 +1,6 @@
 import React from "react";
 
-const SignAlert = () => {
+const SignUpAlert = () => {
   return (
     <div>
       <p>
@@ -12,4 +12,4 @@ const SignAlert = () => {
   );
 };
 
-export default SignAlert;
+export default SignUpAlert;

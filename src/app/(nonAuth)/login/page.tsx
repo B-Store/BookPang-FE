@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import SignForm from "@/components/sign/SignForm";
+import SignForm from "@/components/signUp/SignUpForm";
 import { useSignUser } from "@/store/signUpStore";
 import { useMutationHook } from "@/hooks/useSignMutationHook";
 import { useRouter } from "next/navigation";
